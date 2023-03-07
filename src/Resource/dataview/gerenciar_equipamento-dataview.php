@@ -6,34 +6,63 @@ use Src\Controller\EquipamentoCTRL;
 use Src\Controller\ModeloEquipamentoCTRL;
 use Src\Controller\TipoEquipamentoCTRL;
 use Src\VO\EquipamentoVO;
+use Src\_Public\Util;
+
+$ctrl = new EquipamentoCTRL();
 
 $acao = 'Cadastrar';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+
     $acao = 'Alterar';
-}
+    $dados = (new EquipamentoCTRL)->DetalharEquipamentoCTRL($_GET['id']);
 
-$ctrl = new EquipamentoCTRL();
+    if (empty($dados)) {
+        Util::ChamarPagina('consultar_equipamento');
+    }
 
-if (isset($_POST['btn_cadastrar'])) {
+} 
+
+else if (isset($_POST['btn_gravar'])) {
     //Cria os objetos que serão utilizados
     $vo = new EquipamentoVO;
 
     //Popula as propriedades do objeto de acordo as informações da tela
+    $vo->setId($_POST['id_equipamento']);
     $vo->setTipoId($_POST['tipo_equipamento']);
     $vo->setTModeloId($_POST['modelo_equipamento']);
     $vo->setIdentificacao($_POST['identificacao']);
     $vo->setDescricao($_POST['descricao']);
 
     //Chama a função  da camada a frente
-    $ret = $ctrl->CadastrarEquipamentoCTRL($vo);
+    $ret = $ctrl->GravarEquipamentoCTRL($vo);
 
-    if ($_POST['btn_cadastrar'] == 'ajx') {
+    if ($_POST['btn_gravar'] == 'ajx') {
         echo $ret;
     }
-} else if (isset($_POST['consultar_ajx'])) {
 
-    $equipamentos = $ctrl->ConsultarEquipamentoCTRL(); ?>
+} 
+
+else if (isset($_POST['btn_excluir'])) {
+
+    $vo = new EquipamentoVO();
+    $vo->setId($_POST['id_exc']);
+
+    $ret = $ctrl->ExcluirEquipamentoCTRL($vo);
+
+    if ($_POST['btn_excluir'] == 'ajx') {
+        echo $ret;
+    }
+
+}
+
+else if (isset($_POST['consultar_ajx']) && $_POST['consultar_ajx'] == 'ajx') {
+
+    $tipo = $_POST['tipo_filtro'];
+    $modelo = $_POST['modelo_filtro'];
+    $identificacao = $_POST['identificacao_filtro'];
+
+    $equipamentos = $ctrl->ConsultarEquipamentoCTRL($tipo, $modelo, $identificacao); ?>
 
         <table class="table table-hover" id="tableResult">
             <thead>
@@ -54,8 +83,7 @@ if (isset($_POST['btn_cadastrar'])) {
                             </a>
 
                             <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modal-excluir"
-                                onclick="CarregarModalExcluir('<?= $item['id'] ?>', '<?= $item['tipo_equipamento'] ?>')">Excluir
-
+                                onclick="CarregarModalExcluir('<?= $item['id'] ?>', '<?= $item['descricao'] ?>')">Excluir
                             </button>
                         </td>
                         <td>

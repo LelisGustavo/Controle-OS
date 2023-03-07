@@ -13,7 +13,7 @@ function RetornarMsg(ret) {
             msg = "Ação realizada com sucesso";
             break;
         case -2:
-            msh = "O registo não pode ser excluído pois está em uso";
+            msg = "O registo não pode ser excluído pois está em uso";
             break;
     }
 

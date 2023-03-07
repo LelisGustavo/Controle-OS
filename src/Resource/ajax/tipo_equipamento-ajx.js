@@ -33,9 +33,11 @@ function ConsultarTipoEquipamento() {
         url: BASE_URL("gerenciar_tipo_equipamento-dataview"),
         data: {
             consultar_ajx: 'ajx',
-            nome_pesquisar: $("#nome_filtro").val()
+            nome_pesquisar: $("#nome_filtro").val(),
+            tipo_equipamento: $("#tipo_equipamento").val(),
+            modelo_equipamento: $("#modelo_equipamento").val()
         },
-        success: function(dados_result) {
+        success: function (dados_result) {
             $("#tableResult").html(dados_result);
         }
     })

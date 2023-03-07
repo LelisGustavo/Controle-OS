@@ -94,4 +94,12 @@ class Util
         return $palavra;
     }
 
+    public static function ChamarPagina($pagina) 
+    {
+
+        header("location: $pagina.php");
+        exit;
+
+    }
+
 }

@@ -22,3 +22,9 @@ Hora do erro: 19:44
 Função do erro: CadastrarSetor
 Código do logado: 1
 Mensagem do erro: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_controleos.tb_setores' doesn't exist
+----------------------------------------
+Data do erro: 22/02/2023
+Hora do erro: 16:01
+Função do erro: CadastrarEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_modelo1` FOREIGN KEY (`modelo_id`) REFERENCES `tb_modelo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)

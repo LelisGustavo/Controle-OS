@@ -2,7 +2,7 @@
     <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.1
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    <strong>&copy; Developed by <a href="https://www.linkedin.com/in/gustavo-l%C3%A9lis-a2305921a/">Gustavo Lélis</a>, </strong> All rights
     reserved.
 </footer>
 

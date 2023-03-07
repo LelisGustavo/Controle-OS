@@ -19,22 +19,41 @@ class EquipamentoCTRL
 
 
     //Servirá tanto para inserir quanto para alterar
-    public function CadastrarEquipamentoCTRL(EquipamentoVO $vo)
+    public function GravarEquipamentoCTRL(EquipamentoVO $vo): int 
     {
 
         if (empty($vo->getTipoId()) || empty($vo->getModeloId() || empty($vo->getIdentificacao()) || empty($vo->getDescricao())))
             return 0;
 
-        $vo->setFuncaoErro(CADASTRAR_EQUIPAMENTO);
+        $vo->setFuncaoErro( !empty($vo->getId()) ? ALTERAR_EQUIPAMENTO : CADASTRAR_EQUIPAMENTO);
 
-        return $this->dao->CadastrarEquipamentoDAO($vo);
+        return !empty($vo->getId()) ? $this->dao->AlterarEquipamentoDAO($vo) : $this->dao->CadastrarEquipamentoDAO($vo);
 
     }
 
-    public function ConsultarEquipamentoCTRL(string $nome = ''): array 
+    public function ConsultarEquipamentoCTRL($tipo = '', $modelo = '', $identificacao = ''): array 
     {
 
-        return $this->dao->ConsultarEquipamentoDAO($nome);
+            return $this->dao->ConsultarEquipamentoDAO($tipo, $modelo, $identificacao);
+        
+    }
+
+    public function ExcluirEquipamentoCTRL(EquipamentoVO $vo): int 
+    {
+
+        if (empty($vo->getId())) 
+        return 0;
+
+        $vo->setFuncaoErro(EXCLUIR_EQUIPAMENTO);
+
+        return $this->dao->ExcluirEquipamentoDAO($vo);
+
+    }
+
+    public function DetalharEquipamentoCTRL(int $id)
+    {
+
+        return $this->dao->DetalharEquipamentoDAO($id);
 
     }
 

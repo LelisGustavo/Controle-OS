@@ -31,3 +31,4 @@ const EXCLUIR_SETOR = "ExcluirSetor";
 const CADASTRAR_EQUIPAMENTO = 'CadastrarEquipamento';
 const ALTERAR_EQUIPAMENTO = 'AlterarEquipamento';
 const EXCLUIR_EQUIPAMENTO = 'ExcluirEquipamento';
+const DETALHAR_EQUIPAMENTO = 'DetalharEquipamento';
