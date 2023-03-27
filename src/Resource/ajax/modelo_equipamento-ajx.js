@@ -2,6 +2,8 @@ function CadastrarModeloEquipamento(id_form) {
 
     if (NotificarCampos(id_form)) {
 
+        CarregarTela();
+
         let nome_modelo = $("#nome_modelo").val();
 
         $.ajax({
@@ -12,6 +14,7 @@ function CadastrarModeloEquipamento(id_form) {
                 nome_modelo: nome_modelo
             },
             success: function (retorno) {
+                EncerrarTela();
                 if (retorno == 1) {
                     MensagemSucesso();
                     LimparCampos(id_form);
@@ -28,6 +31,8 @@ function CadastrarModeloEquipamento(id_form) {
 
 function ConsultarModeloEquipamento() {
 
+    CarregarTela();
+
     $.ajax({
         type: 'POST',
         url: BASE_URL("gerenciar_modelo_equipamento-dataview"),
@@ -36,6 +41,7 @@ function ConsultarModeloEquipamento() {
             nome_pesquisar: $("#nome_filtro").val()
         },
         success: function (dados_result) {
+            EncerrarTela();
             $("#tableResult").html(dados_result);
         }
     })

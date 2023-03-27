@@ -4,6 +4,7 @@ namespace Src\Model;
 
 use Src\Model\Conexao;
 use Src\Model\SQL\GerenciarEquipamentoSQL;
+use Src\VO\AlocarVO;
 use Src\VO\EquipamentoVO;
 
 class EquipamentoDAO extends Conexao 
@@ -31,7 +32,6 @@ class EquipamentoDAO extends Conexao
         try {
 
             $sql->execute();
-
             return 1;
 
         } catch (\Exception $ex) {
@@ -155,5 +155,89 @@ class EquipamentoDAO extends Conexao
 
     }
 
+    public function AlocarEquipamentoDAO(AlocarVO $vo): int 
+    {
+
+        $sql = $this->conexao->prepare(GerenciarEquipamentoSQL::ALOCAR_EQUIPAMENTO());
+        $i = 1;
+        $sql->bindValue($i++, $vo->getDataAlocar());
+        $sql->bindValue($i++, $vo->getSituacao());
+        $sql->bindValue($i++, $vo->getIdEquipamento());
+        $sql->bindValue($i++, $vo->getIdSetor());
+
+        try {
+
+            $sql->execute();
+            return 1;
+
+        } catch (\Exception $ex) {
+
+            $vo->setMsgErro($ex->getMessage());
+            parent::GravarErroLog($vo);
+            return -1;
+
+        }
+
+    }
+
+    public function SelecionarEquipamentosNaoAlocadosDAO(int $situacao): array 
+    {
+
+        $sql = $this->conexao->prepare(GerenciarEquipamentoSQL::SELECIONAR_EQUIPAMENTOS_NAO_ALOCADOS());
+        $i = 1;
+        $sql->bindValue($i++, $situacao);
+        $sql->execute();
+
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+    }
+
+    public function RemoverEquipamentoSetorDAO(AlocarVO $vo): int
+    {
+
+        $sql = $this->conexao->prepare(GerenciarEquipamentoSQL::REMOVER_EQUIPAMENTO_SETOR());
+        $i = 1;
+        $sql->bindValue($i++, $vo->getDataRemover());
+        $sql->bindValue($i++, $vo->getSituacao());
+        $sql->bindValue($i++, $vo->getId());
+
+        try {
+
+            $sql->execute();
+            return 1;
+
+        } catch (\Exception $ex) {
+
+            $vo->setMsgErro($ex->getMessage());
+            parent::GravarErroLog($vo);
+            return -1;
+
+        }
+
+    }
+
+    public function SelecionarEquipamentosAlocadosDAO(int $id_setor, int $situacao): array
+    {
+
+        $sql = $this->conexao->prepare(GerenciarEquipamentoSQL::SELECIONAR_EQUIPAMENTOS_ALOCADOS());
+        $i = 1;
+        $sql->bindValue($i++, $id_setor);
+        $sql->bindValue($i++, $situacao);
+        $sql->execute();
+
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+    }
+
+    public function ConsultarEquipamentoSetorDAO($setor = ''): array 
+    {
+
+        $sql = $this->conexao->prepare(GerenciarEquipamentoSQL::CONSULTAR_EQUIPAMENTO_SETOR($setor));
+        $sql->bindValue(1, $setor);
+        $sql->execute();
+
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+    }
 
 }

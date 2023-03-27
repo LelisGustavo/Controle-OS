@@ -29,11 +29,3 @@ function CarregarModalAlterarSetor(id, nome)
     $("#nome_setor_alt").val(nome);
 
 }
-
-// function CarregarModalEquipamento(id, nome)
-// {
-
-//     $("#id_alt").val(id);
-//     $("#nome_equip_alt").val(nome);
-
-// }

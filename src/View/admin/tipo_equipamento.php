@@ -40,7 +40,9 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
           <div class="card-header">
             <h3 class="card-title">Gerencie os tipos de equipamento nesta página</h3>
           </div>
+          
           <div class="card-body">
+
             <form id="form_cad" action="tipo_equipamento.php" method="post">
               <div class="form-group">
                 <label>Tipo do equipamento</label>
@@ -50,6 +52,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
               <button class="btn btn-outline-success" name="btn_cadastrar"
                 onclick="return CadastrarTipoEquipamento('form_cad')">Cadastrar</button>
           </div>
+
           </form>
           <!-- /.card-body -->
         </div>
@@ -63,14 +66,21 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                 <div class="card-tools">
 
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" onkeyup="ConsultarTipoEquipamento()" name="nome_filtro" id="nome_filtro" class="form-control float-right" placeholder="Filtrar...">
+                    <input type="text" onkeyup="ConsultarTipoEquipamento()" name="nome_filtro" id="nome_filtro"
+                      class="form-control float-right" placeholder="Filtrar...">
 
                     <div class="input-group-append">
-                      <button type="button" onclick="ConsultarTipoEquipamento()" class="btn btn-default"><i class="fas fa-search"></i></button>
+                      <button type="button" onclick="ConsultarTipoEquipamento()" class="btn btn-default"><i
+                          class="fas fa-search"></i></button>
                     </div>
-                    
+
                   </div>
                 </div>
+
+                <div id="divLoad">
+                  <!-- Só vai ativar quando estiver em load a tela -->
+                </div>
+
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -78,6 +88,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
 
                 </table>
               </div>
+
               <form id="form_alt" action="tipo_equipamento.php" method="post">
                 <?php
                 include_once 'modals/_tipo_equipamento_alterar.php';

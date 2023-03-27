@@ -49,3 +49,11 @@ function NotificarCampos(id_form) {
 function FecharModal(id_modal) {
     $("#" + id_modal).modal("hide");
 }
+
+function CarregarTela() {
+    $("#divLoad").addClass("overlay").html('<i class="fas fa-2x fa-sync-alt fa-spin"></i>');
+}
+
+function EncerrarTela() {
+    $("#divLoad").removeClass("overlay").html('');
+}

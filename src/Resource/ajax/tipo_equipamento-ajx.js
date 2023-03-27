@@ -2,6 +2,8 @@ function CadastrarTipoEquipamento(id_form) {
 
     if (NotificarCampos(id_form)) {
 
+        CarregarTela();
+
         let nome_tipo_equipamento = $("#nome_tipo").val();
 
         $.ajax({
@@ -12,6 +14,7 @@ function CadastrarTipoEquipamento(id_form) {
                 nome_tipo: nome_tipo_equipamento
             },
             success: function (retorno) {
+                EncerrarTela();
                 if (retorno == 1) {
                     MensagemSucesso();
                     LimparCampos(id_form);
@@ -28,6 +31,8 @@ function CadastrarTipoEquipamento(id_form) {
 
 function ConsultarTipoEquipamento() {
 
+    CarregarTela();
+
     $.ajax({
         type: "POST",
         url: BASE_URL("gerenciar_tipo_equipamento-dataview"),
@@ -38,6 +43,7 @@ function ConsultarTipoEquipamento() {
             modelo_equipamento: $("#modelo_equipamento").val()
         },
         success: function (dados_result) {
+            EncerrarTela();
             $("#tableResult").html(dados_result);
         }
     })

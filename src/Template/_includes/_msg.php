@@ -13,5 +13,9 @@ if (isset($ret)) {
             break;
         case -2:
             echo '<script>MensagemErroExcluir()</script>';
+            break;
+        case -3:
+            echo '<script>MensagemNaoEncontradoRegistro()</script>';
+            break;
     }
 }

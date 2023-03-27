@@ -17,7 +17,7 @@ class AlocarVO extends LogErroVO
     {
         $this->id = $p_id;
     }
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -39,7 +39,7 @@ class AlocarVO extends LogErroVO
     {
         $this->situacao = $p_situacao;
     }
-    public function getSituacao(): string 
+    public function getSituacao()
     {
         return $this->situacao;
     }

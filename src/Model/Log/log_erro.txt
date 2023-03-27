@@ -28,3 +28,168 @@ Hora do erro: 16:01
 Função do erro: CadastrarEquipamento
 Código do logado: 1
 Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_modelo1` FOREIGN KEY (`modelo_id`) REFERENCES `tb_modelo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 13/03/2023
+Hora do erro: 22:04
+Função do erro: CadastrarAlocamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao' cannot be null
+----------------------------------------
+Data do erro: 13/03/2023
+Hora do erro: 22:15
+Função do erro: CadastrarAlocamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao' cannot be null
+----------------------------------------
+Data do erro: 13/03/2023
+Hora do erro: 22:38
+Função do erro: CadastrarAlocamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+----------------------------------------
+Data do erro: 13/03/2023
+Hora do erro: 22:50
+Função do erro: CadastrarAlocamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao' cannot be null
+----------------------------------------
+Data do erro: 17/03/2023
+Hora do erro: 00:38
+Função do erro: AlocarEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao' cannot be null
+----------------------------------------
+Data do erro: 17/03/2023
+Hora do erro: 00:38
+Função do erro: AlocarEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao' cannot be null
+----------------------------------------
+Data do erro: 17/03/2023
+Hora do erro: 00:38
+Função do erro: AlocarEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao' cannot be null
+----------------------------------------
+Data do erro: 17/03/2023
+Hora do erro: 00:38
+Função do erro: AlocarEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao' cannot be null
+----------------------------------------
+Data do erro: 17/03/2023
+Hora do erro: 00:38
+Função do erro: AlocarEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'situacao' cannot be null
+----------------------------------------
+Data do erro: 18/03/2023
+Hora do erro: 16:30
+Função do erro: AlocarEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+----------------------------------------
+Data do erro: 18/03/2023
+Hora do erro: 16:37
+Função do erro: AlocarEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+----------------------------------------
+Data do erro: 18/03/2023
+Hora do erro: 16:41
+Função do erro: AlocarEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+----------------------------------------
+Data do erro: 23/03/2023
+Hora do erro: 21:55
+Função do erro: RemoverEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'data_remover = '2023-03-23 21:55'
+                 WHERE id = '58'' at line 3
+----------------------------------------
+Data do erro: 23/03/2023
+Hora do erro: 21:56
+Função do erro: RemoverEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'data_remover = '2023-03-23 21:56'
+                 WHERE id = '58'' at line 3
+----------------------------------------
+Data do erro: 23/03/2023
+Hora do erro: 21:56
+Função do erro: RemoverEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'data_remover = '2023-03-23 21:56'
+                 WHERE id = '58'' at line 3
+----------------------------------------
+Data do erro: 23/03/2023
+Hora do erro: 22:00
+Função do erro: RemoverEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+----------------------------------------
+Data do erro: 23/03/2023
+Hora do erro: 22:00
+Função do erro: RemoverEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+----------------------------------------
+Data do erro: 23/03/2023
+Hora do erro: 23:08
+Função do erro: RemoverEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+----------------------------------------
+Data do erro: 27/03/2023
+Hora do erro: 00:09
+Função do erro: ExcluirTipoEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipo1` FOREIGN KEY (`tipo_id`) REFERENCES `tb_tipo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 27/03/2023
+Hora do erro: 00:09
+Função do erro: ExcluirTipoEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipo1` FOREIGN KEY (`tipo_id`) REFERENCES `tb_tipo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 27/03/2023
+Hora do erro: 00:09
+Função do erro: ExcluirTipoEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipo1` FOREIGN KEY (`tipo_id`) REFERENCES `tb_tipo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 27/03/2023
+Hora do erro: 00:09
+Função do erro: ExcluirTipoEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipo1` FOREIGN KEY (`tipo_id`) REFERENCES `tb_tipo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 27/03/2023
+Hora do erro: 00:09
+Função do erro: ExcluirTipoEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipo1` FOREIGN KEY (`tipo_id`) REFERENCES `tb_tipo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 27/03/2023
+Hora do erro: 00:09
+Função do erro: ExcluirSetor
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_setor1` FOREIGN KEY (`setor_id`) REFERENCES `tb_setor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 27/03/2023
+Hora do erro: 00:09
+Função do erro: ExcluirSetor
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_setor1` FOREIGN KEY (`setor_id`) REFERENCES `tb_setor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 27/03/2023
+Hora do erro: 00:09
+Função do erro: ExcluirModeloEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_modelo1` FOREIGN KEY (`modelo_id`) REFERENCES `tb_modelo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 27/03/2023
+Hora do erro: 00:09
+Função do erro: ExcluirTipoEquipamento
+Código do logado: 1
+Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipo1` FOREIGN KEY (`tipo_id`) REFERENCES `tb_tipo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)

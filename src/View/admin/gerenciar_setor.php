@@ -60,19 +60,29 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor-dataview.
                 <h3 class="card-title">Setores Cadastrados</h3>
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" onkeyup="ConsultarSetor()" name="nome_filtro" id="nome_filtro" class="form-control float-right" placeholder="Filtrar...">
+                    <input type="text" onkeyup="ConsultarSetor()" name="nome_filtro" id="nome_filtro"
+                      class="form-control float-right" placeholder="Filtrar...">
 
                     <div class="input-group-append">
-                      <button type="button" onclick="ConsultarSetor()" class="btn btn-default"><i class="fas fa-search"></i></button>
+                      <button type="button" onclick="ConsultarSetor()" class="btn btn-default"><i
+                          class="fas fa-search"></i></button>
                     </div>
                   </div>
                 </div>
+
+                <div id="divLoad">
+                  <!-- Só vai ativar quando estiver em load a tela -->
+                </div>
+
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
+
+                <!-- Tabela renderizada via AJAX -->
                 <table class="table table-hover" id="tableResult">
-                  
+
                 </table>
+
               </div>
               <form id="form_alt" action="gerenciar_setor.php" method="post">
                 <?php

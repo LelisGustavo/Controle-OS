@@ -16,7 +16,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $acao = 'Alterar';
     $dados = (new EquipamentoCTRL)->DetalharEquipamentoCTRL($_GET['id']);
-
+    
     if (empty($dados)) {
         Util::ChamarPagina('consultar_equipamento');
     }
@@ -65,8 +65,12 @@ else if (isset($_POST['consultar_ajx']) && $_POST['consultar_ajx'] == 'ajx') {
     $equipamentos = $ctrl->ConsultarEquipamentoCTRL($tipo, $modelo, $identificacao); ?>
 
         <table class="table table-hover" id="tableResult">
+
             <thead>
+
                 <tr>
+
+                    <th>Setor Alocado</th>
                     <th>Ação</th>
                     <th>Tipo</th>
                     <th>Modelo</th>
@@ -74,33 +78,49 @@ else if (isset($_POST['consultar_ajx']) && $_POST['consultar_ajx'] == 'ajx') {
                     <th>Descrição</th>
 
                 </tr>
+
             </thead>
+
             <tbody>
             <?php foreach ($equipamentos as $item) { ?>
                     <tr>
+
+                        <td>
+                            <p class="text-info"> 
+                                <?= $item['nome_setor'] == "" ? "----------" :  $item['nome_setor'] ?> 
+                            </p>
+                        </td>
+
                         <td>
                             <a href="equipamento.php?id=<?=  $item['id'] ?>" class="btn btn-outline-warning btn-sm">Alterar
                             </a>
 
                             <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modal-excluir"
-                                onclick="CarregarModalExcluir('<?= $item['id'] ?>', '<?= $item['descricao'] ?>')">Excluir
+                                onclick="CarregarModalExcluir('<?= $item['id'] ?>', '<?= $item['nome_tipo'] . ' / ' . $item['nome_modelo'] . ' - ' . 'Identificação ' .  $item['identificacao'] ?>')">Excluir
                             </button>
                         </td>
+
                         <td>
                         <?= $item['nome_tipo'] ?>
                         </td>
+
                         <td>
                         <?= $item['nome_modelo'] ?>
                         </td>
+
                         <td>
                         <?= $item['identificacao'] ?>
                         </td>
+
                         <td>
                         <?= $item['descricao'] ?>
                         </td>
+                        
                     </tr>
+                    
             <?php } ?>
             </tbody>
+
         </table>
 
 <?php }

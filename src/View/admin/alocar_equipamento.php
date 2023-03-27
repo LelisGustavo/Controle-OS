@@ -12,72 +12,96 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_alocamento-data
 </head>
 
 <body class="hold-transition sidebar-mini">
-    <!-- Site wrapper -->
+    
     <div class="wrapper">
         <?php
         include_once PATH_URL . '/Template/_includes/_topo.php';
         include_once PATH_URL . '/Template/_includes/_menu.php';
         ?>
 
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
+
             <section class="content-header">
+
                 <div class="container-fluid">
+
                     <div class="row mb-2">
+
                         <div class="col-sm-6">
                             <h1>Alocar Equipamento</h1>
                         </div>
+
                     </div>
-                </div><!-- /.container-fluid -->
+
+                </div>
+
             </section>
 
-            <!-- Main content -->
             <section class="content">
 
-                <!-- Default box -->
                 <div class="card">
+
                     <div class="card-header">
                         <h3 class="card-title">Aqui você poderá alocar um equipamento ao setor especifico</h3>
                     </div>
+
                     <div class="card-body">
+
                         <form id="form_cad" action="alocar_equipamento.php" method="post">
+
+                            <!-- Div/Select renderizando via AJAX -->
                             <div class="form-group">
                                 <label>Equipamento</label>
                                 <select class="form-control select2 obg" style="width: 100%;" name="equipamento"
                                     id="equipamento">
-                                    <option value="">Selecione</option>
                                 </select>
                             </div>
+
+                            <!-- Carregamento dos setores cadastrados no banco de dados -->
                             <div class="form-group">
                                 <label>Setor</label>
-                                <select class="form-control select2 obg" style="width: 100%;" name="setor_equipamento"
-                                    id="setor_equipamento">
+                                <select class="form-control select2 obg" style="width: 100%;" name="setor" id="setor">
                                     <option value="">Selecione</option>
+                                    <?php foreach ($setores as $item) { ?>
+                                        <option value="<?= $item['id'] ?>"><?= $item['nome'] ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
-                            <button class="btn btn-outline-success" name="btn_alocar" onclick="return NotificarCampos('form_cad')">Cadastrar</button>
+
+                            <button class="btn btn-outline-success" name="btn_alocar"
+                                onclick="return AlocarEquipamento('form_cad')">Alocar</button>
+
                         </form>
+
                     </div>
-                    <!-- /.card-body -->
+
+                    <div id="divLoad">
+                        <!-- Só vai ativar quando estiver em load a tela -->
+                    </div>
+
                 </div>
-                <!-- /.card -->
 
             </section>
-            <!-- /.content -->
+
         </div>
-        <!-- /.content-wrapper -->
+    
         <?php
         include_once PATH_URL . '/Template/_includes/_footer.php';
         ?>
-        <!-- /.control-sidebar -->
+
     </div>
-    <!-- ./wrapper -->
 
     <?php
     include_once PATH_URL . '/Template/_includes/_scripts.php';
     include_once PATH_URL . 'Template/_includes/_msg.php';
     ?>
+
+    <script src="../../Resource/ajax/alocar-ajx.js"></script>
+
+    <script>
+        CarregarEquipamentosNaoAlocados();
+    </script>
+
 </body>
 
 </html>

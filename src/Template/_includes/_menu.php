@@ -28,30 +28,6 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="../admin/tipo_equipamento.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Tipo Equipamento</p>
-              </a>
-            </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="../admin/remover_equipamento.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Remover Equipamento</p>
-              </a>
-            </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="../admin/novo_usuario.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Novo Usuário</p>
-              </a>
-            </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
               <a href="../admin/equipamento.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Novo Equipamento</p>
@@ -60,25 +36,9 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="../admin/gerenciar_modelo_equipamento.php" class="nav-link">
+              <a href="../admin/consultar_equipamento.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Gerenciar M Equipamento</p>
-              </a>
-            </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="../admin/consultar_usuario.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Consultar Usuário</p>
-              </a>
-            </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="../admin/gerenciar_setor.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Cadastrar Setores</p>
+                <p>Consultar Equipamento</p>
               </a>
             </li>
           </ul>
@@ -92,9 +52,49 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="../admin/consultar_equipamento.php" class="nav-link">
+              <a href="../admin/remover_equipamento.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Consultar Equipamento</p>
+                <p>Remover Equipamento</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="../admin/tipo_equipamento.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tipo Equipamento</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="../admin/gerenciar_modelo_equipamento.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Gerenciar M Equipamento</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="../admin/gerenciar_setor.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Cadastrar Setores</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="../admin/novo_usuario.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Novo Usuário</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="../admin/consultar_usuario.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Consultar Usuário</p>
               </a>
             </li>
           </ul>

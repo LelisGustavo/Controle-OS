@@ -15,6 +15,9 @@ function RetornarMsg(ret) {
         case -2:
             msg = "O registo não pode ser excluído pois está em uso";
             break;
+        case -3:
+            msg = "Não foi encontrado nenhum registro";
+            break;
     }
 
     return msg;

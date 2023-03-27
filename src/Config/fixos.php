@@ -32,3 +32,12 @@ const CADASTRAR_EQUIPAMENTO = 'CadastrarEquipamento';
 const ALTERAR_EQUIPAMENTO = 'AlterarEquipamento';
 const EXCLUIR_EQUIPAMENTO = 'ExcluirEquipamento';
 const DETALHAR_EQUIPAMENTO = 'DetalharEquipamento';
+
+// Alocar e Remover
+const ALOCAR_EQUIPAMENTO = 'AlocarEquipamento';
+const REMOVER_EQUIPAMENTO_SETOR = 'RemoverEquipamentoSetor';
+
+// Situação alocar
+const SITUACAO_ALOCADO = 1;
+const SITUACAO_REMOVIDO = 2;
+const SITUACAO_MANUTENCAO = 3;

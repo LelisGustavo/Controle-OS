@@ -61,18 +61,25 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" onkeyup="ConsultarModeloEquipamento()" name="nome_filtro" id="nome_filtro" class="form-control float-right" placeholder="Filtrar...">
+                    <input type="text" onkeyup="ConsultarModeloEquipamento()" name="nome_filtro" id="nome_filtro"
+                      class="form-control float-right" placeholder="Filtrar...">
 
                     <div class="input-group-append">
-                      <button type="button" onclick="ConsultarModeloEquipamento()" class="btn btn-default"><i class="fas fa-search"></i></button>
+                      <button type="button" onclick="ConsultarModeloEquipamento()" class="btn btn-default"><i
+                          class="fas fa-search"></i></button>
                     </div>
                   </div>
                 </div>
+
+                <div id="divLoad">
+                  <!-- Só vai ativar quando estiver em load a tela -->
+                </div>
+
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover" id="tableResult">
-                  
+
                 </table>
               </div>
               <form id="form_alt" action="gerenciar_modelo_equipamento.php" method="post">

@@ -2,6 +2,8 @@ function GravarEquipamento(id_form) {
 
     if (NotificarCampos(id_form)) {
 
+        CarregarTela();
+
         let id_equipamento = $("#id_equipamento").val();
         let nome_tipo_equipamento = $("#tipo_equipamento").val();
         let nome_modelo = $("#modelo_equipamento").val();
@@ -20,13 +22,20 @@ function GravarEquipamento(id_form) {
                 descricao: descricao
             },
             success: function (retorno) {
+                EncerrarTela();
                 if (retorno == 1) {
                     MensagemSucesso();
-
+                    // Se vazio é um cadastro, se não vazio, é uma alteração
                     if (id_equipamento == "") {
                         LimparCampos(id_form);
-                    }
+                    } else {
+                        // Depois de alterado, manda o usuario para outra pagina depois de 3 segundos
+                        setTimeout(function () {
+                        location = "consultar_equipamento.php?identificacao=" + identificacao
+                        }, 3000);
 
+                    }
+                // Retorna a mensagem de erro caso ocorrer algo na operação    
                 } else if (retorno == -1) {
                     MensagemErro();
                 }
@@ -40,6 +49,8 @@ function GravarEquipamento(id_form) {
 
 function ConsultarEquipamento() {
 
+    CarregarTela();
+
     $.ajax({
         type: "POST",
         url: BASE_URL("gerenciar_equipamento-dataview"),
@@ -50,6 +61,7 @@ function ConsultarEquipamento() {
             modelo_filtro: $("#modelo_filtro").val()
         },
         success: function (dados_result) {
+            EncerrarTela();
             $("#tableResult").html(dados_result);
         }
     })
@@ -65,49 +77,14 @@ function Excluir() {
             id_exc: $("#id_exc").val()
         },
         success: function (retorno) {
+            FecharModal("modal-excluir");
             if (retorno == 1) {
                 MensagemSucesso();
                 ConsultarEquipamento();
-                FecharModal("modal-excluir")
-            } else {
-                MensagemErro();
+            } else if (retorno == -1) {
+                MensagemErroExcluir();
             }
         }
     })
-    return false;
-}
-
-function AlterarEquipamento(id_form) {
-
-    if (NotificarCampos(id_form)) {
-
-        let nome_tipo_equipamento = $("#tipo_equipamento").val();
-        let nome_modelo = $("#modelo_equipamento").val();
-        let identificacao = $("#identificacao").val();
-        let descricao = $("#descricao").val();
-        let id = $("#id_equipamento").val();
-
-        $.ajax({
-            type: "POST",
-            url: BASE_URL("gerenciar_equipamento-dataview"),
-            data: {
-                btn_alterar: 'ajx',
-                tipo_equipamento: nome_tipo_equipamento,
-                modelo_equipamento: nome_modelo,
-                identificacao: identificacao,
-                descricao: descricao,
-                id_equipamento: id
-            },
-            success: function (retorno) {
-                if (retorno == 1) {
-                    MensagemSucesso();
-                    LimparCampos(id_form);
-                    //window.location.replace("consultar_equipamento.php")
-                } else if (retorno == -1) {
-                    MensagemErro();
-                }
-            }
-        })
-    }
     return false;
 }
