@@ -3,6 +3,7 @@
 namespace Src\VO;
 
 use Src\_Public\Util;
+use Src\VO\LogErroVO;
 class EstadoVO extends LogErroVO
 {
     private $id;
@@ -20,13 +21,13 @@ class EstadoVO extends LogErroVO
     }
 
     // GET e SET NOME
-    public function setNome($p_nome): void
+    public function setNomeEstado($p_nome): void
     {
         $this->nome = Util::TratarDadosGeral($p_nome);
     }
-    public function getNome(): string
+    public function getNomeEstado(): string
     {
-        return $this->nome;
+        return $this->nome ?? null;
     }
 
     // GET e SET SIGLA

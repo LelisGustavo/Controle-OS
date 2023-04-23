@@ -37,7 +37,19 @@ const DETALHAR_EQUIPAMENTO = 'DetalharEquipamento';
 const ALOCAR_EQUIPAMENTO = 'AlocarEquipamento';
 const REMOVER_EQUIPAMENTO_SETOR = 'RemoverEquipamentoSetor';
 
+// Usuário
+const CADASTRAR_USUARIO = 'CadastrarUsuario';
+const ALTERAR_USUARIO = 'AlterarUsuario';
+
 // Situação alocar
 const SITUACAO_ALOCADO = 1;
 const SITUACAO_REMOVIDO = 2;
 const SITUACAO_MANUTENCAO = 3;
+
+// Renderização componente
+const COMPONENTE_TABELA = 'TABELA';
+const COMPONENTE_COMBO = 'COMBO';
+
+// Status
+const ATIVO = 1;
+const INATIVO = 2;

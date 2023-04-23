@@ -12,5 +12,7 @@
 <link rel="stylesheet" href="../../Template/plugins/toastr/toastr.min.css">
 <!-- overlayScrollbars -->
 <link rel="stylesheet" href="../../Template/dist/css/adminlte.min.css">
+<!-- CSS -->
+<link rel="stylesheet" href="../../Template/dist/css/custom.css">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">

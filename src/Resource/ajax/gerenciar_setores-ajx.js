@@ -29,6 +29,7 @@ function CadastrarSetor(id_form) {
     return false;
 }
 
+// Função que consulta os setores cadastrados no banco de dados via AJAX
 function ConsultarSetor() {
 
     CarregarTela();
@@ -37,11 +38,13 @@ function ConsultarSetor() {
         type: "POST",
         url: BASE_URL("gerenciar_setor-dataview"),
         data: {
+            componente: $("#componente").val(),
             consultar_ajx: 'ajx',
-            nome_pesquisar: $("#nome_filtro").val()
+            nome_pesquisar: $("#componente").val() != "COMBO" ? $("#nome_filtro").val() : ""
         },
         success: function (dados_result) {
             EncerrarTela();
+            $("#tableResult").html('');
             $("#tableResult").html(dados_result);
         }
     })

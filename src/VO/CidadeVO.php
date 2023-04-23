@@ -3,7 +3,8 @@
 namespace Src\VO;
 
 use Src\_Public\Util;
-class CidadeVO extends LogErroVO
+use Src\VO\EstadoVO;
+class CidadeVO extends EstadoVO
 {
     private $id;
     private $nome;
@@ -20,11 +21,11 @@ class CidadeVO extends LogErroVO
     }
 
     // GET e SET NOME
-    public function setNome($p_nome): void
+    public function setNomeCidade($p_nome): void
     {
         $this->nome = Util::TratarDadosGeral($p_nome);
     }
-    public function getNome(): string
+    public function getNomeCidade(): string
     {
         return $this->nome;
     }

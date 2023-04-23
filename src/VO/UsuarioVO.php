@@ -3,8 +3,9 @@
 namespace Src\VO;
 
 use Src\_Public\Util;
+use Src\VO\EnderecoVO;
 
-class UsuarioVO extends LogErroVO
+class UsuarioVO extends EnderecoVO
 {
 
     private $id;
@@ -70,7 +71,7 @@ class UsuarioVO extends LogErroVO
     {
         $this->senha = Util::RemoverTags($p_senha);
     }
-    public function getSenha(): string
+    public function getSenha()
     {
         return $this->senha;
     }

@@ -60,6 +60,10 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor-dataview.
                 <h3 class="card-title">Setores Cadastrados</h3>
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
+
+                  <!-- Renderiza a tabela de setores cadastrados (TABELA) -->
+                  <input type="hidden" id="componente" value="<?= COMPONENTE_TABELA ?>">
+
                     <input type="text" onkeyup="ConsultarSetor()" name="nome_filtro" id="nome_filtro"
                       class="form-control float-right" placeholder="Filtrar...">
 

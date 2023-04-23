@@ -3,7 +3,8 @@
 namespace Src\VO;
 
 use Src\_Public\Util;
-class EnderecoVO extends LogErroVO
+use Src\VO\CidadeVO;
+class EnderecoVO extends CidadeVO
 {
     private $id;
     private $rua;
@@ -68,7 +69,7 @@ class EnderecoVO extends LogErroVO
     {
         $this->id_cidade = $p_cidade;
     }
-    public function getCidade(): int 
+    public function getCidade()
     {
         return $this->id_cidade;
     }
@@ -78,7 +79,7 @@ class EnderecoVO extends LogErroVO
     {
         $this->id_usuario = $p_usuario;
     }
-    public function getUsuario(): int
+    public function getUsuario()
     {
         return $this->id_usuario;
     }

@@ -39,20 +39,23 @@ class GerenciarEquipamentoSQL
                        equi.descricao,
                        tipo.nome as nome_tipo,
                        model.nome as nome_modelo,
-                       se.nome as nome_setor
+                       (  SELECT se.nome as nome_setor
+                          FROM tb_alocar as al
+                        -- Relação entre equipamento e o alocar
+                    INNER JOIN tb_equipamento as equi1
+                            ON al.equipamento_id = equi1.id
+                        -- Relação entre equipamento e o setor
+                    INNER JOIN tb_setor as se
+                            ON al.setor_id = se.id
+                         WHERE equi1.id = equi.id
+                           AND al.situacao != 2 ) as nome_setor
                   FROM tb_equipamento as equi
                 -- Relação entre equipamento e o tipo
             INNER JOIN tb_tipo as tipo
                     ON equi.tipo_id = tipo.id
                 -- Relaçao entre equipamento e o modelo
             INNER JOIN tb_modelo as model
-                    ON equi.modelo_id = model.id
-                -- Relação entre equipamento e o alocar
-             LEFT JOIN tb_alocar as al
-                    ON al.equipamento_id = equi.id
-                -- Relação entre equipamento e o setor
-             LEFT JOIN tb_setor as se
-                    ON al.setor_id = se.id';
+                    ON equi.modelo_id = model.id';
 
         if (!empty($tipo) && empty($modelo)) {
 

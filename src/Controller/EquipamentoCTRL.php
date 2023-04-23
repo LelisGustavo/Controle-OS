@@ -26,8 +26,10 @@ class EquipamentoCTRL
         if (empty($vo->getTipoId()) || empty($vo->getModeloId() || empty($vo->getIdentificacao()) || empty($vo->getDescricao())))
             return 0;
 
-        $vo->setFuncaoErro( !empty($vo->getId()) ? ALTERAR_EQUIPAMENTO : CADASTRAR_EQUIPAMENTO);
+        // Uso de um ternario para saber se é uma alteração ou um cadastro e mandar para o LogErro (Se der um erro)
+        $vo->setFuncaoErro(!empty($vo->getId()) ? ALTERAR_EQUIPAMENTO : CADASTRAR_EQUIPAMENTO);
 
+        // Uso de um ternario no return para poder alterar ou cadastrar um novo equipamento
         return !empty($vo->getId()) ? $this->dao->AlterarEquipamentoDAO($vo) : $this->dao->CadastrarEquipamentoDAO($vo);
 
     }

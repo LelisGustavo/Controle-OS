@@ -85,6 +85,7 @@ class Util
         return $palavra;
     }
 
+    //Função pública para tratar uso de caracteres permitidos com execesso de espaço nos input's
     public static function TratarDadosGeralComEspacos($palavra)
     {
 
@@ -94,11 +95,28 @@ class Util
         return $palavra;
     }
 
+    //Função que chama ma página expecifica no projeto
     public static function ChamarPagina(string $pagina) 
     {
 
         header("location: $pagina.php");
         exit;
+
+    }
+
+    //Função para criptografar a senha do usuario
+    public static function CriptografarSenha($palavra)
+    {
+        
+        return password_hash($palavra, PASSWORD_DEFAULT);
+
+    }
+
+    //Função para verificar a senha do usuario
+    public static function VerificarSenha($senha, $hash)
+    {
+        
+        return password_verify($senha, $hash);
 
     }
 

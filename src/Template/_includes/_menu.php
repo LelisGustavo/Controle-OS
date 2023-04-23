@@ -70,7 +70,7 @@
             <li class="nav-item">
               <a href="../admin/gerenciar_modelo_equipamento.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Gerenciar M Equipamento</p>
+                <p>Modelo Equipamento</p>
               </a>
             </li>
           </ul>

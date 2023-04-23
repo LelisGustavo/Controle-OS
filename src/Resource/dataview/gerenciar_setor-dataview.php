@@ -19,7 +19,7 @@ if (isset($_POST['btn_cadastrar'])) {
         echo $ret;
     }
 
-}
+} 
 
 else if (isset($_POST['btn_alterar'])) {
 
@@ -33,7 +33,7 @@ else if (isset($_POST['btn_alterar'])) {
         echo $ret;
     }
 
-}
+} 
 
 else if (isset($_POST['btn_excluir'])) {
 
@@ -46,37 +46,57 @@ else if (isset($_POST['btn_excluir'])) {
         echo $ret;
     }
 
-}
+} 
 
 else if (isset($_POST['consultar_ajx']) && $_POST['consultar_ajx'] == 'ajx') {
 
-    $setores = $ctrl->ConsultarSetorCTRL($_POST['nome_pesquisar']); ?>
+    $setores = $ctrl->ConsultarSetorCTRL($_POST['nome_pesquisar']);
 
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Ação</th>
-                            <th>Nome</th>
+    // Renderiza o html se for uma tabela
+    if ($_POST['componente'] == COMPONENTE_TABELA) {
 
-                        </tr>
-                    </thead>
-                    <tbody>
-            <?php foreach ($setores as $item) { ?>
+        ?>
+
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
-                                <td>
-                                    <button class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#modal-alterar-setor"
-                                        onclick="CarregarModalAlterarSetor('<?= $item['id'] ?>', '<?= $item['nome'] ?>')">Alterar
-                                    </button>
+                                <th>Ação</th>
+                                <th>Nome</th>
 
-                                    <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modal-excluir"
-                                        onclick="CarregarModalExcluir('<?= $item['id'] ?>', '<?= $item['nome'] ?>')">Excluir</button>
-                                </td>
-                                <td>
-                        <?= $item['nome'] ?>
-                                </td>
                             </tr>
-            <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                <?php foreach ($setores as $item) { ?>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#modal-alterar-setor"
+                                            onclick="CarregarModalAlterarSetor('<?= $item['id'] ?>', '<?= $item['nome'] ?>')">Alterar
+                                        </button>
 
-<?php } ?>
+                                        <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modal-excluir"
+                                            onclick="CarregarModalExcluir('<?= $item['id'] ?>', '<?= $item['nome'] ?>')">Excluir</button>
+                                    </td>
+                                    <td>
+                            <?= $item['nome'] ?>
+                                    </td>
+                                </tr>
+                <?php } ?>
+                        </tbody>
+                    </table>
+
+    <?php } 
+    
+    // Renderiza o html se for um select option
+    else if ($_POST['componente'] == COMPONENTE_COMBO) { ?>
+
+                        <select class="form-control select2 obg" name="setor">
+
+                            <option value="">Selecione</option>
+            <?php foreach ($setores as $item) { ?>
+                                <option value="<?= $item['id'] ?>"><?= $item['nome'] ?></option>
+            <?php } ?>
+
+                        </select>
+
+    <?php }
+} ?>

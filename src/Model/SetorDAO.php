@@ -28,8 +28,8 @@ class SetorDAO extends Conexao
         try {
 
             $sql->execute();
-
             return 1;
+            
         } catch (\Exception $ex) {
 
             $vo->setMsgErro($ex->getMessage());
