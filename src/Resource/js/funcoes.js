@@ -120,8 +120,8 @@ function LimpaFormularioCep() {
 // Não permite que o usuário modifique os campos cidade/estado preenchidos pela API após digitar o cep
 function GerenciarCamposEndereco(bool) {
 
-    $("#cidade_usuario").prop("disabled", bool);
-    $("#estado_usuario").prop("disabled", bool);
+    $("#cidade_usuario").prop("readonly", bool);
+    $("#estado_usuario").prop("readonly", bool);
 
 }
 

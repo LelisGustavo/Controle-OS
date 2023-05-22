@@ -4,6 +4,7 @@ namespace Src\VO;
 
 use Src\_Public\Util;
 use Src\VO\CidadeVO;
+
 class EnderecoVO extends CidadeVO
 {
     private $id;
@@ -15,11 +16,11 @@ class EnderecoVO extends CidadeVO
     private $id_usuario;
 
     // GET e SET ID
-    public function setId($p_id): void
+    public function setIdEndereco($p_id): void
     {
         $this->id = $p_id;
     }
-    public function getId(): int
+    public function getIdEndereco(): int
     {
         return $this->id;
     }

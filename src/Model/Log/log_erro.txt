@@ -193,3 +193,33 @@ Hora do erro: 00:09
 Função do erro: ExcluirTipoEquipamento
 Código do logado: 1
 Mensagem do erro: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_equipamento`, CONSTRAINT `fk_tb_equipamento_tb_tipo1` FOREIGN KEY (`tipo_id`) REFERENCES `tb_tipo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+----------------------------------------
+Data do erro: 21/05/2023
+Hora do erro: 21:42
+Função do erro: AlterarUsuario
+Código do logado: 1
+Mensagem do erro: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id = '8'' at line 5
+----------------------------------------
+Data do erro: 21/05/2023
+Hora do erro: 21:42
+Função do erro: AlterarUsuario
+Código do logado: 1
+Mensagem do erro: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id = '6'' at line 5
+----------------------------------------
+Data do erro: 21/05/2023
+Hora do erro: 21:46
+Função do erro: AlterarUsuario
+Código do logado: 1
+Mensagem do erro: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id = '4'' at line 5
+----------------------------------------
+Data do erro: 21/05/2023
+Hora do erro: 21:49
+Função do erro: AlterarUsuario
+Código do logado: 1
+Mensagem do erro: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= tecnico_id = '4'' at line 3
+----------------------------------------
+Data do erro: 21/05/2023
+Hora do erro: 21:52
+Função do erro: AlterarUsuario
+Código do logado: 1
+Mensagem do erro: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= tecnico_id = '6'' at line 3

@@ -21,7 +21,7 @@ class UsuarioVO extends EnderecoVO
     {
         $this->id = $p_id;
     }
-    public function getId(): int
+    public function getId(): int 
     {
         return $this->id;
     }
@@ -39,7 +39,7 @@ class UsuarioVO extends EnderecoVO
     //GET e SET NOME
     public function setNome($p_nome): void
     {
-        $this->nome = Util::TratarDadosGeral($p_nome);
+        $this->nome = Util::TratarDadosGeralComEspacos($p_nome);
     }
     public function getNome(): string
     {

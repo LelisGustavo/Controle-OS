@@ -4,6 +4,7 @@ namespace Src\VO;
 
 use Src\_Public\Util;
 use Src\VO\LogErroVO;
+
 class EstadoVO extends LogErroVO
 {
     private $id;
@@ -23,9 +24,9 @@ class EstadoVO extends LogErroVO
     // GET e SET NOME
     public function setNomeEstado($p_nome): void
     {
-        $this->nome = Util::TratarDadosGeral($p_nome);
+        $this->nome = Util::TratarDadosGeralComEspacos($p_nome);
     }
-    public function getNomeEstado(): string
+    public function getNomeEstado(): string | null // ou ?string
     {
         return $this->nome ?? null;
     }
@@ -33,7 +34,7 @@ class EstadoVO extends LogErroVO
     // GET e SET SIGLA
     public function setSigla($p_sigla): void
     {
-        $this->sigla = Util::TratarDadosGeral($p_sigla);
+        $this->sigla = Util::TratarDadosGeralComEspacos($p_sigla);
     }
     public function getSigla(): string
     {

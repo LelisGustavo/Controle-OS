@@ -119,12 +119,12 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
 
                                     <div class="form-group col-md-6">
                                         <label>Cidade</label>
-                                        <input disabled class="form-control obg" placeholder="Este campo será preenchido automáticamente após digitar o CEP..." name="cidade_usuario" id="cidade_usuario">
+                                        <input readonly class="form-control obg" placeholder="Este campo será preenchido automáticamente após digitar o CEP..." name="cidade_usuario" id="cidade_usuario">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>Estado</label>
-                                        <input disabled class="form-control obg" placeholder="Este campo será preenchido automáticamente após digitar o CEP..." name="estado_usuario" id="estado_usuario">
+                                        <input readonly class="form-control obg" placeholder="Este campo será preenchido automáticamente após digitar o CEP..." name="estado_usuario" id="estado_usuario">
                                     </div>
 
                                 </div>
@@ -179,7 +179,6 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
     <?php
     include_once PATH_URL . '/Template/_includes/_scripts.php';
     include_once PATH_URL . 'Template/_includes/_msg.php';
-    echo isset($ret);
     ?>
 
     <script src="../../Resource/ajax/gerenciar_setores-ajx.js"></script>

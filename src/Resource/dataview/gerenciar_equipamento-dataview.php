@@ -70,12 +70,12 @@ else if (isset($_POST['consultar_ajx']) && $_POST['consultar_ajx'] == 'ajx') {
 
                 <tr>
 
-                    <th>Setor Alocado</th>
                     <th>Ação</th>
                     <th>Tipo</th>
                     <th>Modelo</th>
                     <th>Identificação</th>
                     <th>Descrição</th>
+                    <th>Setor Alocado</th>
 
                 </tr>
 
@@ -84,12 +84,6 @@ else if (isset($_POST['consultar_ajx']) && $_POST['consultar_ajx'] == 'ajx') {
             <tbody>
             <?php foreach ($equipamentos as $item) { ?>
                     <tr>
-
-                        <td>
-                            <p class="text-info"> 
-                                <?= $item['nome_setor'] == "" ? "----------" :  $item['nome_setor'] ?> 
-                            </p>
-                        </td>
 
                         <td>
                             <a href="equipamento.php?id=<?=  $item['id'] ?>" class="btn btn-outline-warning btn-sm">Alterar
@@ -114,6 +108,12 @@ else if (isset($_POST['consultar_ajx']) && $_POST['consultar_ajx'] == 'ajx') {
 
                         <td>
                         <?= $item['descricao'] ?>
+                        </td>
+
+                        <td>
+                            <p class="text-info"> 
+                                <?= $item['nome_setor'] == "" ? "----------" :  $item['nome_setor'] ?> 
+                            </p>
                         </td>
                         
                     </tr>

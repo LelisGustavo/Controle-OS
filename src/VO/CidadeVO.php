@@ -4,6 +4,7 @@ namespace Src\VO;
 
 use Src\_Public\Util;
 use Src\VO\EstadoVO;
+
 class CidadeVO extends EstadoVO
 {
     private $id;
@@ -23,7 +24,7 @@ class CidadeVO extends EstadoVO
     // GET e SET NOME
     public function setNomeCidade($p_nome): void
     {
-        $this->nome = Util::TratarDadosGeral($p_nome);
+        $this->nome = Util::TratarDadosGeralComEspacos($p_nome);
     }
     public function getNomeCidade(): string
     {

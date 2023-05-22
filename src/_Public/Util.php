@@ -40,7 +40,6 @@ class Util
         echo '<pre>';
         print_r($arr);
         echo '</pre>';
-
     }
 
     //Função pública da hora atual
@@ -95,19 +94,28 @@ class Util
         return $palavra;
     }
 
-    //Função que chama ma página expecifica no projeto
-    public static function ChamarPagina(string $pagina) 
+    //Função que chama uma página expecifica no projeto
+    public static function ChamarPagina(string $pagina)
     {
 
         header("location: $pagina.php");
         exit;
+        
+    }
 
+    //Função que chama uma página expecifica no profeto com parametros
+    public static function ChamarPaginaParametros(string $pagina, string $parametros)
+    {
+
+        header("location: $pagina.php?$parametros");
+        exit;
+        
     }
 
     //Função para criptografar a senha do usuario
     public static function CriptografarSenha($palavra)
     {
-        
+
         return password_hash($palavra, PASSWORD_DEFAULT);
 
     }
@@ -115,9 +123,32 @@ class Util
     //Função para verificar a senha do usuario
     public static function VerificarSenha($senha, $hash)
     {
-        
+
         return password_verify($senha, $hash);
 
+    }
+
+    public static function RetornarTipo(int $tipo): string
+    {
+
+        $tipo_desc = '';
+
+        switch ($tipo) {
+
+            case PERFIL_ADM:
+                $tipo_desc = 'Administrador';
+                break;
+
+            case PERFIL_FUNCIONARIO:
+                $tipo_desc = 'Funcionário';
+                break;
+
+            case PERFIL_TECNICO:
+                $tipo_desc = 'Técnico';
+                break;
+        }
+
+        return $tipo_desc;
     }
 
 }

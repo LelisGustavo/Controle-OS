@@ -29,3 +29,13 @@ function CarregarModalAlterarSetor(id, nome)
     $("#nome_setor_alt").val(nome);
 
 }
+
+
+function CarregarModalAlterarStatus(id, status, nome) 
+{
+
+    $("#id_alt").val(id);
+    $("#status_alt").val(status);
+    $("#nome_usuario").val(nome);
+
+}

@@ -40,6 +40,7 @@ const REMOVER_EQUIPAMENTO_SETOR = 'RemoverEquipamentoSetor';
 // Usuário
 const CADASTRAR_USUARIO = 'CadastrarUsuario';
 const ALTERAR_USUARIO = 'AlterarUsuario';
+const ALTERAR_STATUS_USUARIO = 'AlterarStatusUsuario';
 
 // Situação alocar
 const SITUACAO_ALOCADO = 1;
@@ -53,3 +54,6 @@ const COMPONENTE_COMBO = 'COMBO';
 // Status
 const ATIVO = 1;
 const INATIVO = 2;
+
+// Quantidades de registro para consulta limite
+const QTD_ULTIMOS_CADASTRADOS = 5;

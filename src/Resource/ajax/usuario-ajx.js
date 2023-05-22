@@ -22,3 +22,45 @@ function ValidarEmailDuplicado() {
 
 }
 
+function FiltrarUsuario() {
+
+    let nome_filtro = $("#nome_filtro").val();
+    let primeira_vez = $("#primeira_vez").val();
+
+    $.ajax({
+        type: "POST",
+        url: BASE_URL("gerenciar_usuario-dataview"),
+        data: {
+            filtrar_usuario: 'ajx',
+            nome_filtro: nome_filtro,
+            primeira_vez: primeira_vez
+        },
+        success: function (dados_result) {
+            $("#tableResult").html(dados_result);
+            $("#primeira_vez").val('0');
+        }
+    })
+    
+}
+
+function AlterarStatus(id, status) {
+
+    $.ajax({
+        type: "POST",
+        url: BASE_URL("gerenciar_usuario-dataview"),
+        data: {
+            btn_alterar_status: 'ajx',
+            id_user: id,
+            status: status
+        },
+        success: function (retorno) {
+            if (retorno == '1') {
+                MensagemSucesso();
+                FiltrarUsuario();
+            } else if (retorno == '2') {
+                MensagemErro();
+            }
+        }
+    })
+            
+}
