@@ -238,10 +238,12 @@ class GerenciarUsuarioSQL
     {
         
         $sql = 'SELECT id,
-                       senha
+                       senha,
+                       nome
                   FROM tb_usuario
                  WHERE email = ?
-                   AND status = ?';
+                   AND status = ?
+                   AND tipo = ?';
 
         return $sql;
 

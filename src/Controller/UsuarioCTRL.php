@@ -107,22 +107,23 @@ class UsuarioCTRL
 
     }
 
-    // public function ValidarLoginCTRL(string $login, string $senha): array|int 
-    // {
+    public function ValidarLoginCTRL(string $login, string $senha): array|bool
+    {
         
-        // if (empty($login) || empty($senha)) {
-        //     return 0;
-        // }
+        if (empty($login) || empty($senha)) {
+            return 0;
+        }
 
-        // $user = $this->dao->ValidarLoginDAO($login, ATIVO);
+        $user = $this->dao->ValidarLoginDAO($login, ATIVO, PERFIL_ADM);
 
         // Teste para verificar se o login OU senha está inválido
-        // if (empty($user) || !Util::VerificarSenha($senha, $user['senha'])) {
-        //     return -4;
-        // }
-
-        //tratamento da sessão e outros
-
-    // }
+        if (empty($user) || !Util::VerificarSenha($senha, $user['senha'])) {
+            return -4;    
+        }
+        
+        Util::CriarSessao($user['id'], $user['nome']);
+        Util::ChamarPagina('consultar_usuario');
+        
+    }
 
 }

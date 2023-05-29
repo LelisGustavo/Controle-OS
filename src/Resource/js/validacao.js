@@ -41,8 +41,6 @@ function MensagemNaoEncontradoRegistro(){
     toastr.info(RetornarMsg(-3));
 }
 
-// function EmailDuplicado() {
-    
-//     toastr.warning(RetornarMsg(-4));
-
-// }
+function MensagemNaoEncontradoUsuario(){
+    toastr.info(RetornarMsg(-4));
+}

@@ -3,7 +3,7 @@
 // define('PATH_URL', $_SERVER['DOCUMENT_ROOT'] . '/ControleOs/src/');
 
 // Definição do caminho padrão (local) do projeto
-define('PATH_URL', $_SERVER['DOCUMENT_ROOT'] . '/ControleOs/src/');
+define('PATH_URL', $_SERVER['DOCUMENT_ROOT'] . '/ControleOS/src/');
 
 // Tipos de Úsuario
 const PERFIL_ADM = 1;

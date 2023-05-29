@@ -242,3 +242,13 @@ else if (isset($_POST['btn_alterar'])) {
     Util::ChamarPaginaParametros('consultar_usuario', "ret=$ret&nome_filtro=".$vo->getNome());
 
 }
+
+else if (isset($_POST['btn_acessar'])) {
+
+    $login = $_POST['login'];
+    $senha = $_POST['senha'];
+
+    $ret = $ctrl->ValidarLoginCTRL($login, $senha);
+
+}
+

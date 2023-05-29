@@ -5,9 +5,55 @@ namespace Src\_Public;
 class Util
 {
 
+    public static function IniciarSessao()
+    {
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+    }
+
+    public static function CriarSessao($id, $nome)
+    {
+
+        self::IniciarSessao();
+
+        $_SESSION['cod'] = $id;
+        $_SESSION['nome'] = $nome;
+    }
+
     public static function CodigoLogado(): int
     {
-        return 1;
+
+        self::IniciarSessao();
+
+        return $_SESSION['cod'];
+    }
+
+    public static function VerLogado()
+    {
+
+        self::IniciarSessao();
+        if (!isset($_SESSION['cod']) || $_SESSION['cod'] == '' ) {
+            self::IrParaLogin();
+        }
+
+    }
+
+    public static function IrParaLogin() 
+    {
+
+        Util::ChamarPagina('http://localhost/controleOS/src/View/admin/acesso');
+
+    }
+
+    public static function Deslogar()
+    {
+        self::IniciarSessao();
+        unset($_SESSION['cod']);
+        unset($_SESSION['nome']);
+
+        self::IrParaLogin();
     }
 
     //Função privada para verificar o fuso hórario do usuário
@@ -100,7 +146,6 @@ class Util
 
         header("location: $pagina.php");
         exit;
-        
     }
 
     //Função que chama uma página expecifica no profeto com parametros
@@ -109,7 +154,6 @@ class Util
 
         header("location: $pagina.php?$parametros");
         exit;
-        
     }
 
     //Função para criptografar a senha do usuario
@@ -117,7 +161,6 @@ class Util
     {
 
         return password_hash($palavra, PASSWORD_DEFAULT);
-
     }
 
     //Função para verificar a senha do usuario
@@ -125,7 +168,6 @@ class Util
     {
 
         return password_verify($senha, $hash);
-
     }
 
     public static function RetornarTipo(int $tipo): string
@@ -150,5 +192,4 @@ class Util
 
         return $tipo_desc;
     }
-
 }

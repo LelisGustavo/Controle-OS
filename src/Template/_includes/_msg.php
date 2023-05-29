@@ -6,6 +6,9 @@ if (isset($_GET['ret'])) {
 
 if (isset($ret)) {
     switch ($ret) {
+        case -4:
+            echo '<script>MensagemNaoEncontradoUsuario()</script>';
+            break;
         case -3:
             echo '<script>MensagemNaoEncontradoRegistro()</script>';
             break;

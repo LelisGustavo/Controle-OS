@@ -76,7 +76,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
         </div>
 
         <hr>
-        
+
         <div class="row" id="divResultado">
 
           <div class="col-12">
@@ -89,7 +89,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
           </div>
 
         </div>
-        
+
       </section>
 
     </div>
@@ -101,9 +101,9 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
   </div>
 
   <?php
-    include_once PATH_URL . '/Template/_includes/_scripts.php';
-    include_once PATH_URL . 'Template/_includes/_msg.php';
-    ?>
+  include_once PATH_URL . '/Template/_includes/_scripts.php';
+  include_once PATH_URL . 'Template/_includes/_msg.php';
+  ?>
 
   <script src="../../Resource/ajax/usuario-ajx.js"></script>
   <script>

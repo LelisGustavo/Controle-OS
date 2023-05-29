@@ -301,12 +301,13 @@ class UsuarioDAO extends Conexao
         
     }
 
-    public function ValidarLoginDAO(string $login, int $status): array
+    public function ValidarLoginDAO(string $login, int $status, int $perfil): array|bool
     {
         
         $sql = $this->conexao->prepare(GerenciarUsuarioSQL::VALIDAR_LOGIN());
         $sql->bindValue(1, $login);
         $sql->bindValue(2, $status);
+        $sql->bindValue(3, $perfil);
         $sql->execute();
 
         return $sql->fetch(\PDO::FETCH_ASSOC);
