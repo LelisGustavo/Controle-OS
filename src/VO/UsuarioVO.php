@@ -14,6 +14,7 @@ class UsuarioVO extends EnderecoVO
     private $email;
     private $tel;
     private $senha;
+    private $repetir_senha;
     private $status;
 
     // GET e SET ID
@@ -74,6 +75,16 @@ class UsuarioVO extends EnderecoVO
     public function getSenha()
     {
         return $this->senha;
+    }
+
+    //GET e SET REPETIR SENHA
+    public function setRepetirSenha($p_repetir_senha): void
+    {
+        $this->repetir_senha = Util::RemoverTags($p_repetir_senha);
+    }
+    public function getRepetirSenha()
+    {
+        return $this->repetir_senha;
     }
 
     //GET e SET STATUS

@@ -1,7 +1,4 @@
 <?php
-
-use Src\_Public\Util;
-
 require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-dataview.php';
 ?>
 
@@ -106,6 +103,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
   ?>
 
   <script src="../../Resource/ajax/usuario-ajx.js"></script>
+  
   <script>
     FiltrarUsuario()
   </script>

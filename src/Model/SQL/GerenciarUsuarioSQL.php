@@ -248,5 +248,28 @@ class GerenciarUsuarioSQL
         return $sql;
 
     }
+
+    // Recupera a senha do usuário, para poder alterar em outra tela
+    public static function RECUPERAR_SENHA(): string
+    {
+        
+        $sql = 'SELECT senha
+                  FROM tb_usuario
+                 WHERE id = ?';
+
+        return $sql;
+
+    }
+
+    public static function ALTERAR_SENHA_USUARIO(): string 
+    {
+
+        $sql = 'UPDATE tb_usuario
+                   SET senha = ?
+                 WHERE id = ?';
+
+        return $sql;
+
+    }
     
 }

@@ -126,4 +126,34 @@ class UsuarioCTRL
         
     }
 
+    public function ChecarSenhaUsuarioCTRL(int $id, string $senha_digitada): int
+    {
+
+        $senha_hash = $this->dao->RecuperarSenhaUsuarioDAO($id);
+
+        return Util::VerificarSenha($senha_digitada, $senha_hash) ? 1 : -1;
+
+    }
+
+    public function AlterarSenhaUsuarioCTRL(UsuarioVO $vo)
+    {
+
+        if (empty($vo->getId()) || $vo->getSenha() === '')
+            return 0;
+
+        if (strlen($vo->getSenha()) < 6)
+            return -5;
+        
+        if ($vo->getSenha() != $vo->getRepetirSenha())
+            return -6;
+
+        $vo->setFuncaoErro(ALTERAR_SENHA_USUARIO);
+
+        $criptografar_senha = $vo->getSenha();
+        $vo->setSenha(Util::CriptografarSenha($criptografar_senha));
+        
+        return $this->dao->AlterarSenhaUsuarioDAO($vo);
+
+    }
+
 }

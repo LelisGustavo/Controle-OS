@@ -29,11 +29,9 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_equipamento-dat
                     <div class="row mb-2">
 
                         <div class="col-sm-6">
-
                             <h1>
                                 <?= $acao ?> Equipamento
                             </h1>
-
                         </div>
 
                     </div>
@@ -47,11 +45,9 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_equipamento-dat
                 <div class="card">
 
                     <div class="card-header">
-
                         <h3 class="card-title">
                             <?= isset($dados) ? 'Alterar o equipamento cadastrado' : 'Aqui você podera cadastrar seus novos equipamentos' ?>
                         </h3>
-
                     </div>
 
                     <div class="card-body">
@@ -125,6 +121,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_equipamento-dat
     ?>
 
     <script src="../../Resource/ajax/equipamento-ajx.js"></script>
+    
     <script>
         ConsultarEquipamento();
     </script>

@@ -44,3 +44,11 @@ function MensagemNaoEncontradoRegistro(){
 function MensagemNaoEncontradoUsuario(){
     toastr.info(RetornarMsg(-4));
 }
+
+function MensagemSenhaTamanhoNaoConfere() {
+    toastr.info(RetornarMsg(-5));
+}
+
+function MensagemSenhaNaoConfere() {
+    toastr.error(RetornarMsg(-6));
+}

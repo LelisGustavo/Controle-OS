@@ -31,9 +31,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor-dataview.
           <div class="row mb-2">
 
             <div class="col-sm-6">
-
               <h1>Gerenciar Setores</h1>
-
             </div>
 
           </div>
@@ -47,9 +45,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor-dataview.
         <div class="card">
 
           <div class="card-header">
-
             <h3 class="card-title">Aqui você gerencia todos os setores cadastrados</h3>
-
           </div>
 
           <div class="card-body">
@@ -151,6 +147,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor-dataview.
   ?>
 
   <script src="../../Resource/ajax/gerenciar_setores-ajx.js"></script>
+
   <script>
     ConsultarSetor()
   </script>

@@ -42,9 +42,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_alocamento-data
                 <div class="card">
 
                     <div class="card-header">
-
                         <h3 class="card-title">Aqui você poderá remover seus equipamentos</h3>
-
                     </div>
 
                     <div class="card-body">

@@ -6,6 +6,13 @@ if (isset($_GET['ret'])) {
 
 if (isset($ret)) {
     switch ($ret) {
+
+        case -6:
+            echo '<script>MensagemSenhaNaoConfere()</script>';
+            break;
+        case -5:
+            echo '<script>MensagemSenhaTamanhoNaoConfere()</script>';
+            break;
         case -4:
             echo '<script>MensagemNaoEncontradoUsuario()</script>';
             break;

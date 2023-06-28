@@ -41,6 +41,7 @@ const REMOVER_EQUIPAMENTO_SETOR = 'RemoverEquipamentoSetor';
 const CADASTRAR_USUARIO = 'CadastrarUsuario';
 const ALTERAR_USUARIO = 'AlterarUsuario';
 const ALTERAR_STATUS_USUARIO = 'AlterarStatusUsuario';
+const ALTERAR_SENHA_USUARIO = "AlterarSenhaUsuario";
 
 // Situação alocar
 const SITUACAO_ALOCADO = 1;

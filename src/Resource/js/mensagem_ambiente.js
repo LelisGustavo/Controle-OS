@@ -3,6 +3,12 @@ function RetornarMsg(ret) {
 
     switch (ret) {
 
+        case -6:
+            msg = "Senha e Repetir Senha não conferem";
+            break;
+        case -5:
+            msg = "Senha tem que conter pelo menos 6 caracteres";
+            break;
         case -4:
             msg = "Usuário não encontrado";
             break;

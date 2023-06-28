@@ -313,4 +313,36 @@ class UsuarioDAO extends Conexao
         return $sql->fetch(\PDO::FETCH_ASSOC);
 
     }
+
+    public function RecuperarSenhaUsuarioDAO(int $id)
+    {
+
+        $sql = $this->conexao->prepare(GerenciarUsuarioSQL::RECUPERAR_SENHA());
+        $sql->bindValue(1, $id);
+        $sql->execute();
+
+        return $sql->fetch(\PDO::FETCH_ASSOC)['senha'];
+
+    }
+
+    public function AlterarSenhaUsuarioDAO(UsuarioVO $vo): int
+    {
+        
+        $sql = $this->conexao->prepare(GerenciarUsuarioSQL::ALTERAR_SENHA_USUARIO());
+        $i = 1;
+        $sql->bindValue($i++, $vo->getSenha());
+        $sql->bindValue($i++, $vo->getId());
+
+        try {
+
+            $sql->execute();
+            return 1;
+        } catch (\Exception $ex) {
+
+            $vo->setMsgErro($ex->getMessage());
+            parent::GravarErroLog($vo);
+            return -1;
+        }
+
+    }
 }
