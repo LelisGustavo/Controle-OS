@@ -146,11 +146,11 @@ class UsuarioCTRL
         
         if ($vo->getSenha() != $vo->getRepetirSenha())
             return -6;
-
-        $vo->setFuncaoErro(ALTERAR_SENHA_USUARIO);
-
+    
         $criptografar_senha = $vo->getSenha();
         $vo->setSenha(Util::CriptografarSenha($criptografar_senha));
+
+        $vo->setFuncaoErro(ALTERAR_SENHA_USUARIO);
         
         return $this->dao->AlterarSenhaUsuarioDAO($vo);
 

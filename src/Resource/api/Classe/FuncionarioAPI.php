@@ -2,9 +2,12 @@
 
 namespace Src\Resource\api\Classe;
 
+use Src\Controller\ChamadoCTRL;
 use Src\Controller\UsuarioCTRL;
 use Src\Resource\api\Classe\ApiRequest;
+use Src\VO\ChamadoVO;
 use Src\VO\FuncionarioVO;
+use Src\VO\UsuarioVO;
 
 class FuncionarioAPI extends ApiRequest
 {
@@ -68,13 +71,23 @@ class FuncionarioAPI extends ApiRequest
     public function AlterarSenhaUsuario()
     {
 
-        $vo = new FuncionarioVO();
+        $vo = new UsuarioVO();
         // Dados do usuario funcionário (Senha)
         $vo->setId($this->params['usuario_id']);
         $vo->setSenha($this->params['nova_senha_digitada']);
         $vo->setRepetirSenha($this->params['repetir_nova_senha_digitada']);
 
         return $this->ctrl_user->AlterarSenhaUsuarioCTRL($vo);
+
+    }
+
+    public function ListarEquipamentoChamadoSetor()
+    {
+
+        $vo = new ChamadoVO;
+        $vo->setIdSetor($this->params['setor_id']);
+
+        return (new ChamadoCTRL)->ListarEquipamentosChamadoSetorCTRL($vo);
 
     }
 

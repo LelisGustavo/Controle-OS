@@ -195,7 +195,7 @@ class GerenciarEquipamentoSQL
 
     }
 
-    public static function CONSULTAR_EQUIPAMENTO_SETOR($setor): string 
+    public static function CONSULTAR_EQUIPAMENTO_SETOR(): string 
     {
 
         $sql = 'SELECT al.id,

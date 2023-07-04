@@ -232,7 +232,7 @@ class EquipamentoDAO extends Conexao
     public function ConsultarEquipamentoSetorDAO($setor = ''): array 
     {
 
-        $sql = $this->conexao->prepare(GerenciarEquipamentoSQL::CONSULTAR_EQUIPAMENTO_SETOR($setor));
+        $sql = $this->conexao->prepare(GerenciarEquipamentoSQL::CONSULTAR_EQUIPAMENTO_SETOR());
         $sql->bindValue(1, $setor);
         $sql->execute();
 
