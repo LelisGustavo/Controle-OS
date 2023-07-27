@@ -43,6 +43,9 @@ const ALTERAR_USUARIO = 'AlterarUsuario';
 const ALTERAR_STATUS_USUARIO = 'AlterarStatusUsuario';
 const ALTERAR_SENHA_USUARIO = "AlterarSenhaUsuario";
 
+// Chamado
+const ABRIR_CHAMADO = 'AbrirChamado';
+
 // Situação alocar
 const SITUACAO_ALOCADO = 1;
 const SITUACAO_REMOVIDO = 2;

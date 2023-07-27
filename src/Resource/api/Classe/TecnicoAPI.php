@@ -2,14 +2,14 @@
 
 namespace Src\Resource\api\Classe;
 
-use Src\Controller\ChamadoCTRL;
 use Src\Controller\UsuarioCTRL;
+use Src\Controller\ChamadoCTRL;
 use Src\Resource\api\Classe\ApiRequest;
+use Src\VO\TecnicoVO;
 use Src\VO\ChamadoVO;
-use Src\VO\FuncionarioVO;
 use Src\VO\UsuarioVO;
 
-class FuncionarioAPI extends ApiRequest
+class TecnicoAPI extends ApiRequest
 {
 
     private $ctrl_user;
@@ -39,14 +39,14 @@ class FuncionarioAPI extends ApiRequest
     public function AlterarUsuario()
     {
 
-        $vo = new FuncionarioVO();
-        // Dados do usuario funcionário
+        $vo = new TecnicoVO();
+        // Dados do usuario técnico
         $vo->setId($this->params['usuario_id']);
         $vo->setTipo($this->params['tipo']);
         $vo->setNome($this->params['nome_usuario']);
         $vo->setEmail($this->params['email_usuario']);
         $vo->setTelefone($this->params['telefone_usuario']);
-        $vo->setIdSetor($this->params['setor']);
+        $vo->setNomeEmpresa($this->params['nome_empresa_tec']);
 
         // Dados do endereço
         $vo->setIdEndereco($this->params['endereco_id']);
@@ -78,43 +78,6 @@ class FuncionarioAPI extends ApiRequest
         $vo->setRepetirSenha($this->params['repetir_nova_senha_digitada']);
 
         return $this->ctrl_user->AlterarSenhaUsuarioCTRL($vo);
-
-    }
-
-    public function ListarEquipamentoChamadoSetor()
-    {
-
-        $vo = new ChamadoVO;
-        $vo->setIdSetor($this->params['setor_id']);
-
-        return (new ChamadoCTRL)->ListarEquipamentosChamadoSetorCTRL($vo);
-
-    }
-
-    public function AbrirChamado()
-    {
-
-        $vo = new ChamadoVO();
-
-        $vo->setIdFuncionario($this->params['id_user']);
-        $vo->setIdAlocar($this->params['id_alocar']);
-        $vo->setProblema($this->params['problema']);
-
-        return (new ChamadoCTRL)->AbrirChamadoCTRL($vo);
-
-    }
-
-    public function FiltrarChamado()
-    {
-
-        return (new ChamadoCTRL)->FiltrarChamadoCTRL($this->params['situacao'], $this->params['id_setor']);
-
-    }
-
-    public function DetalharChamadoID()
-    {
-
-        return (new ChamadoCTRL)->DetalharChamadoIDCTRL($this->params['id_chamado']);
 
     }
 

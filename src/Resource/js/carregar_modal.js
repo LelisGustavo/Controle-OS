@@ -30,7 +30,6 @@ function CarregarModalAlterarSetor(id, nome)
 
 }
 
-
 function CarregarModalAlterarStatus(id, status, nome) 
 {
 
