@@ -10,8 +10,6 @@ const PERFIL_ADM = 1;
 const PERFIL_FUNCIONARIO = 2;
 const PERFIL_TECNICO = 3;
 
-// Funções do projeto
-
 // Tipo do Equipamento
 const CADASTRAR_TIPO = "CadastrarTipoEquipamento";
 const ALTERAR_TIPO = "AlterarTipoEquipamento";
@@ -61,3 +59,7 @@ const INATIVO = 2;
 
 // Quantidades de registro para consulta limite
 const QTD_ULTIMOS_CADASTRADOS = 5;
+
+// Chave Secret Token
+const SECRET_JWT = 'cedricoisthebestdog';
+const NAO_AUTORIZADO = -1000;

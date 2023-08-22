@@ -40,10 +40,10 @@ class ChamadoCTRL
 
     }
 
-    public function FiltrarChamadoCTRL(int $situacao, int $id_setor): array|bool 
+    public function FiltrarChamadoCTRL(int $situacao, ?int $id_setor, int $tipo_user): array|bool 
     {
 
-        return $this->dao->FiltrarChamadoDAO($situacao,$id_setor);
+        return $this->dao->FiltrarChamadoDAO($situacao, $id_setor, $tipo_user);
 
     }
 
@@ -51,6 +51,29 @@ class ChamadoCTRL
     {
 
         return $this->dao->DetalharChamadoIDDAO($id_chamado);
+
+    }
+
+    public function AtenderChamadoCTRL(ChamadoVO $vo): int
+    {
+
+        if (empty($vo->getId()) || empty($vo->getTecnicoAtendimento())) {
+            return 0;
+        }
+
+        return $this->dao->AtenderChamadoDAO($vo);
+
+    }
+
+    public function FinalizarChamadoCTRL(ChamadoVO $vo): int
+    {
+
+        if (empty($vo->getId()) || empty($vo->getTecnicoEncerramento()) || empty($vo->getLaudo())) {
+            return 0;
+        }
+
+        $vo->setSituacao(SITUACAO_ALOCADO);
+        return $this->dao->FinalizarChamadoDAO($vo);
 
     }
 

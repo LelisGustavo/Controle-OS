@@ -2,6 +2,7 @@
 
 namespace Src\Resource\api\Classe;
 
+use Src\_Public\Util;
 use Src\Controller\ChamadoCTRL;
 use Src\Controller\UsuarioCTRL;
 use Src\Resource\api\Classe\ApiRequest;
@@ -33,89 +34,124 @@ class FuncionarioAPI extends ApiRequest
 
     public function DetalharUsuario()
     {
-        return $this->ctrl_user->DetalharUsuarioCTRL($this->params['id_user']);
+        if (Util::AuthenticationTokenAccess()) {
+            return $this->ctrl_user->DetalharUsuarioCTRL($this->params['id_user']);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function AlterarUsuario()
     {
 
-        $vo = new FuncionarioVO();
-        // Dados do usuario funcionário
-        $vo->setId($this->params['usuario_id']);
-        $vo->setTipo($this->params['tipo']);
-        $vo->setNome($this->params['nome_usuario']);
-        $vo->setEmail($this->params['email_usuario']);
-        $vo->setTelefone($this->params['telefone_usuario']);
-        $vo->setIdSetor($this->params['setor']);
+        if (Util::AuthenticationTokenAccess()) {
 
-        // Dados do endereço
-        $vo->setIdEndereco($this->params['endereco_id']);
-        $vo->setCep($this->params['cep_usuario']);
-        $vo->setRua($this->params['rua_usuario']);
-        $vo->setBairro($this->params['bairro_usuario']);
-        $vo->setComplemento($this->params['complemento_usuario']);
-        $vo->setNomeCidade($this->params['cidade_usuario']);
-        $vo->setSigla($this->params['estado_usuario']);
+            $vo = new FuncionarioVO();
+            // Dados do usuario funcionário
+            $vo->setId($this->params['usuario_id']);
+            $vo->setTipo($this->params['tipo']);
+            $vo->setNome($this->params['nome_usuario']);
+            $vo->setEmail($this->params['email_usuario']);
+            $vo->setTelefone($this->params['telefone_usuario']);
+            $vo->setIdSetor($this->params['setor']);
 
-        return $this->ctrl_user->AlterarUsuarioCTRL($vo);
+            // Dados do endereço
+            $vo->setIdEndereco($this->params['endereco_id']);
+            $vo->setCep($this->params['cep_usuario']);
+            $vo->setRua($this->params['rua_usuario']);
+            $vo->setBairro($this->params['bairro_usuario']);
+            $vo->setComplemento($this->params['complemento_usuario']);
+            $vo->setNomeCidade($this->params['cidade_usuario']);
+            $vo->setSigla($this->params['estado_usuario']);
 
+            return $this->ctrl_user->AlterarUsuarioCTRL($vo);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function ChecarSenhaUsuario()
     {
 
-        return $this->ctrl_user->ChecarSenhaUsuarioCTRL($this->params['id_user'], $this->params['senha_digitada']);
-
+        if (Util::AuthenticationTokenAccess()) {
+            return $this->ctrl_user->ChecarSenhaUsuarioCTRL($this->params['id_user'], $this->params['senha_digitada']);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function AlterarSenhaUsuario()
     {
 
-        $vo = new UsuarioVO();
-        // Dados do usuario funcionário (Senha)
-        $vo->setId($this->params['usuario_id']);
-        $vo->setSenha($this->params['nova_senha_digitada']);
-        $vo->setRepetirSenha($this->params['repetir_nova_senha_digitada']);
+        if (Util::AuthenticationTokenAccess()) {
 
-        return $this->ctrl_user->AlterarSenhaUsuarioCTRL($vo);
+            $vo = new UsuarioVO();
+            // Dados do usuario funcionário (Senha)
+            $vo->setId($this->params['usuario_id']);
+            $vo->setSenha($this->params['nova_senha_digitada']);
+            $vo->setRepetirSenha($this->params['repetir_nova_senha_digitada']);
 
+            return $this->ctrl_user->AlterarSenhaUsuarioCTRL($vo);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function ListarEquipamentoChamadoSetor()
     {
 
-        $vo = new ChamadoVO;
-        $vo->setIdSetor($this->params['setor_id']);
+        if (Util::AuthenticationTokenAccess()) {
 
-        return (new ChamadoCTRL)->ListarEquipamentosChamadoSetorCTRL($vo);
+            $vo = new ChamadoVO;
+            $vo->setIdSetor($this->params['setor_id']);
 
+            return (new ChamadoCTRL)->ListarEquipamentosChamadoSetorCTRL($vo);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function AbrirChamado()
     {
 
-        $vo = new ChamadoVO();
+        if (Util::AuthenticationTokenAccess()) {
 
-        $vo->setIdFuncionario($this->params['id_user']);
-        $vo->setIdAlocar($this->params['id_alocar']);
-        $vo->setProblema($this->params['problema']);
+            $vo = new ChamadoVO();
 
-        return (new ChamadoCTRL)->AbrirChamadoCTRL($vo);
+            $vo->setIdFuncionario($this->params['id_user']);
+            $vo->setIdAlocar($this->params['id_alocar']);
+            $vo->setProblema($this->params['problema']);
 
+            return (new ChamadoCTRL)->AbrirChamadoCTRL($vo);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function FiltrarChamado()
     {
 
-        return (new ChamadoCTRL)->FiltrarChamadoCTRL($this->params['situacao'], $this->params['id_setor']);
-
+        if (Util::AuthenticationTokenAccess()) {
+            
+            return (new ChamadoCTRL)->FiltrarChamadoCTRL($this->params['situacao'], $this->params['id_setor'], PERFIL_FUNCIONARIO);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function DetalharChamadoID()
     {
 
-        return (new ChamadoCTRL)->DetalharChamadoIDCTRL($this->params['id_chamado']);
-
+        if (Util::AuthenticationTokenAccess()) {
+            return (new ChamadoCTRL)->DetalharChamadoIDCTRL($this->params['id_chamado']);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
+    public function Autenticar()
+    {
+
+        return $this->ctrl_user->ValidarLoginCTRL($this->params['email'], $this->params['senha'], PERFIL_FUNCIONARIO);
+    }
 }

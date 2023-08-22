@@ -34,17 +34,15 @@ class Util
     {
 
         self::IniciarSessao();
-        if (!isset($_SESSION['cod']) || $_SESSION['cod'] == '' ) {
+        if (!isset($_SESSION['cod']) || $_SESSION['cod'] == '') {
             self::IrParaLogin();
         }
-
     }
 
-    public static function IrParaLogin() 
+    public static function IrParaLogin()
     {
 
         Util::ChamarPagina('http://localhost/controleOS/src/View/admin/acesso');
-
     }
 
     public static function Deslogar()
@@ -191,5 +189,71 @@ class Util
         }
 
         return $tipo_desc;
+    }
+
+    public static function CreateTokenAuthentication(array $dados_user)
+    {
+
+        $header = [
+            'typ' => 'JWT',
+            'alg' => 'HS256'
+        ];
+
+        $payload = $dados_user;
+
+        $header = json_encode($header);
+        $payload = json_encode($payload);
+
+        $header = base64_encode($header);
+        $payload = base64_encode($payload);
+
+        $sign = hash_hmac(
+            "sha256",
+            $header . '.' . $payload,
+            SECRET_JWT,
+            true
+        );
+
+        $sign = base64_encode($sign);
+        $token = $header . '.' . $payload . '.' . $sign;
+
+        return $token;
+    }
+
+    public static function AuthenticationTokenAccess()
+    {
+
+        // Recupera todo o cabeçalho da requisição
+        $http_header = apache_request_headers();
+        // Se não for nulo
+        if (
+            $http_header['Authorization'] != null &&
+            str_contains($http_header['Authorization'], '.')
+        ) {
+            // Quebra o bearer (autenticação de token)
+            $bearer = explode(' ', $http_header['Authorization']);
+            $token = explode('.', $bearer[1]);
+
+            // Quebrando os valores e jogango em seus significados
+            $header = $token[0];
+            $payload = $token[1];
+            $sign = $token[2];
+            
+            // Faz a criptografia novamente para ver se bate com a chave
+            $valid = hash_hmac(
+                'sha256',
+                $header . '.' . $payload,
+                SECRET_JWT,
+                true
+            );
+            $valid = base64_encode($valid);
+            if ($valid === $sign) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return false;
     }
 }

@@ -237,10 +237,13 @@ class GerenciarUsuarioSQL
     public static function VALIDAR_LOGIN(): string
     {
         
-        $sql = 'SELECT id,
-                       senha,
-                       nome
-                  FROM tb_usuario
+        $sql = 'SELECT us.id,
+                       us.senha,
+                       us.nome,
+                       fu.setor_id
+                  FROM tb_usuario as us
+             LEFT JOIN tb_funcionario as fu
+                    ON fu.funcionario_id = us.id
                  WHERE email = ?
                    AND status = ?
                    AND tipo = ?';

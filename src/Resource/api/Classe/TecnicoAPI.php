@@ -8,6 +8,7 @@ use Src\Resource\api\Classe\ApiRequest;
 use Src\VO\TecnicoVO;
 use Src\VO\ChamadoVO;
 use Src\VO\UsuarioVO;
+use Src\_Public\Util;
 
 class TecnicoAPI extends ApiRequest
 {
@@ -33,11 +34,17 @@ class TecnicoAPI extends ApiRequest
 
     public function DetalharUsuario()
     {
-        return $this->ctrl_user->DetalharUsuarioCTRL($this->params['id_user']);
+        if (Util::AuthenticationTokenAccess()) {
+            return $this->ctrl_user->DetalharUsuarioCTRL($this->params['id_user']);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function AlterarUsuario()
     {
+
+        if (Util::AuthenticationTokenAccess()) {
 
         $vo = new TecnicoVO();
         // Dados do usuario técnico
@@ -58,18 +65,25 @@ class TecnicoAPI extends ApiRequest
         $vo->setSigla($this->params['estado_usuario']);
 
         return $this->ctrl_user->AlterarUsuarioCTRL($vo);
-
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function ChecarSenhaUsuario()
     {
 
-        return $this->ctrl_user->ChecarSenhaUsuarioCTRL($this->params['id_user'], $this->params['senha_digitada']);
-
+        if (Util::AuthenticationTokenAccess()) {
+            return $this->ctrl_user->ChecarSenhaUsuarioCTRL($this->params['id_user'], $this->params['senha_digitada']);
+        } else {
+            NAO_AUTORIZADO;
+        }
     }
 
     public function AlterarSenhaUsuario()
     {
+
+        if (Util::AuthenticationTokenAccess()) {
 
         $vo = new UsuarioVO();
         // Dados do usuario funcionário (Senha)
@@ -78,7 +92,85 @@ class TecnicoAPI extends ApiRequest
         $vo->setRepetirSenha($this->params['repetir_nova_senha_digitada']);
 
         return $this->ctrl_user->AlterarSenhaUsuarioCTRL($vo);
+        } else {
+            NAO_AUTORIZADO;
+        }
+    }
+
+    public function AbrirChamado()
+    {
+
+        if (Util::AuthenticationTokenAccess()) {
+
+            $vo = new ChamadoVO();
+
+            $vo->setIdFuncionario($this->params['id_user']);
+            $vo->setIdAlocar($this->params['id_alocar']);
+            $vo->setProblema($this->params['problema']);
+
+            return (new ChamadoCTRL)->AbrirChamadoCTRL($vo);
+        } else {
+            NAO_AUTORIZADO;
+        }
+    }
+
+    public function FiltrarChamado()
+    {
+
+        if (Util::AuthenticationTokenAccess()) {
+
+        return (new ChamadoCTRL)->FiltrarChamadoCTRL($this->params['situacao'], null, PERFIL_TECNICO);
+        } else {
+            NAO_AUTORIZADO;
+        }
+    }
+
+    public function DetalharChamadoID()
+    {
+
+        if (Util::AuthenticationTokenAccess()) {
+            return (new ChamadoCTRL)->DetalharChamadoIDCTRL($this->params['id_chamado']);
+        } else {
+            NAO_AUTORIZADO;
+        }
+    }
+
+    public function AtenderChamado()
+    {
+
+        if (Util::AuthenticationTokenAccess()) {
+
+        $vo = new ChamadoVO();
+        $vo->setTecnicoAtendimento($this->params['id_tecnico']);
+        $vo->setId($this->params['id_chamado']);
+
+        return (new ChamadoCTRL)->AtenderChamadoCTRL($vo);
+        } else {
+            NAO_AUTORIZADO;
+        }
+    }
+
+    public function FinalizarChamado()
+    {
+
+        if (Util::AuthenticationTokenAccess()) {
+
+        $vo = new ChamadoVO();
+        $vo->setTecnicoEncerramento($this->params['id_tecnico']);
+        $vo->setId($this->params['id_chamado']);
+        $vo->setLaudo($this->params['laudo']);
+        $vo->setIdAlocar($this->params['id_alocar']);
+
+        return (new ChamadoCTRL)->FinalizarChamadoCTRL($vo);   
+        } else {
+            NAO_AUTORIZADO;
+        }
 
     }
 
+    public function Autenticar()
+    {
+
+        return $this->ctrl_user->ValidarLoginCTRL($this->params['email'], $this->params['senha'], PERFIL_TECNICO);
+    }
 }
