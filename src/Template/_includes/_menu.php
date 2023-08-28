@@ -129,7 +129,7 @@ if (isset($_GET['close']) && $_GET['close'] == 1) {
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="../../Template/_includes/_menu.php?close=1" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+              <i class="nav-icon fas fa-power-off"></i>
                 <p>Sair</p>
               </a>
             </li>

@@ -77,4 +77,11 @@ class ChamadoCTRL
 
     }
 
+    public function MostrarDadosTempoRealChamadosCTRL(): array 
+    {
+
+        return $this->dao->MostrarDadosTempoRealChamadosDAO();
+
+    }
+
 }

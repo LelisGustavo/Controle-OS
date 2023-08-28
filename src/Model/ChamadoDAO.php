@@ -149,4 +149,14 @@ class ChamadoDAO extends Conexao
         }
 
     }
+
+    public function MostrarDadosTempoRealChamadosDAO(): array 
+    {
+
+        $sql = $this->conexao->prepare(GerenciarChamadoSQL::NUMERO_TEMPO_REAL_CHAMADOS());
+        $sql->execute();
+
+        return $sql->fetch(\PDO::FETCH_ASSOC);
+
+    }
 }

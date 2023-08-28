@@ -248,7 +248,7 @@ else if (isset($_POST['btn_acessar'])) {
     $login = $_POST['login'];
     $senha = $_POST['senha'];
 
-    $ret = $ctrl->ValidarLoginCTRL($login, $senha);
+    $ret = $ctrl->ValidarLoginCTRL($login, $senha, PERFIL_ADM);
 
 }
 

@@ -32,7 +32,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
                         </div>
 
                     </div>
-                    
+
                 </div>
 
             </section>
@@ -83,7 +83,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
 
                                     <div class="form-group col-md-6">
                                         <label>Telefone</label>
-                                        <input class="form-control obg" placeholder="Digite aqui..." name="telefone_usuario" id="telefone_usuario">
+                                        <input class="form-control obg tel num" placeholder="Digite aqui..." name="telefone_usuario" id="telefone_usuario">
                                     </div>
 
                                 </div>
@@ -93,7 +93,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
 
                                     <div class="form-group col-md-6">
                                         <label>CEP</label>
-                                        <input onblur="BuscarCep()" class="form-control obg" placeholder="Digite aqui..." name="cep_usuario" id="cep_usuario">
+                                        <input onblur="BuscarCep()" class="form-control obg cep num" placeholder="Digite aqui..." name="cep_usuario" id="cep_usuario">
                                     </div>
 
                                     <div class="form-group col-md-6">
@@ -187,6 +187,8 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_usuario-datavie
 
     <script src="../../Resource/ajax/gerenciar_setores-ajx.js"></script>
     <script src="../../Resource/ajax/usuario-ajx.js"></script>
+    <script src="../../Template/dist/js/jquery.mask.min.js"></script>
+    <script src="../../Template/dist/js/mask.js"></script>
 
     <script>
         ConsultarSetor();

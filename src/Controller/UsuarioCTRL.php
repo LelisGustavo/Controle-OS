@@ -117,7 +117,7 @@ class UsuarioCTRL
         if ($tipo == PERFIL_ADM) {
 
             Util::CriarSessao($user['id'], $user['nome']);
-            Util::ChamarPagina('consultar_usuario');
+            Util::ChamarPagina('inicial_adm');
         } else {
 
             if ($tipo == PERFIL_FUNCIONARIO) 

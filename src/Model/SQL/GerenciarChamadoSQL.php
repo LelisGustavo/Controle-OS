@@ -196,4 +196,16 @@ class GerenciarChamadoSQL
                 return $sql;
 
         }
+
+        public static function NUMERO_TEMPO_REAL_CHAMADOS(): string 
+        {
+
+                $sql = "SELECT
+                        (SELECT count(id) FROM tb_chamado WHERE data_atendimento IS NULL) as AGUARDANDO,
+                        (SELECT count(id) FROM tb_chamado WHERE data_atendimento IS NOT NULL AND data_encerramento IS NULL) as ATENDIMENTO,
+                        (SELECT count(id) FROM tb_chamado WHERE data_encerramento IS NOT NULL) as ENCERRADO";
+
+                return $sql;
+
+        }
 }
