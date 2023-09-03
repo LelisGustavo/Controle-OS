@@ -120,6 +120,16 @@ class EquipamentoDAO extends Conexao
 
     }
 
+    public function ListarTodosEquipamentosDAO(): array
+    {
+
+        $sql = $this->conexao->prepare(GerenciarEquipamentoSQL::LISTAR_TODOS_EQUIPAMENTOS());
+        $sql->execute();
+
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+    }
+
     public function ExcluirEquipamentoDAO(EquipamentoVO $vo): int 
     {
 

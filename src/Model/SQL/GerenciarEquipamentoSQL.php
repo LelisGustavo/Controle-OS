@@ -14,7 +14,6 @@ class GerenciarEquipamentoSQL
                 (?, ?, ?, ?)';
 
         return $sql;
-
     }
 
     public static function ALTERAR_EQUIPAMENTO(): string
@@ -28,7 +27,6 @@ class GerenciarEquipamentoSQL
                   WHERE id = ?';
 
         return $sql;
-
     }
 
     public static function CONSULTAR_EQUIPAMENTO($tipo, $modelo, $identificacao): string
@@ -64,20 +62,14 @@ class GerenciarEquipamentoSQL
             if (!empty($identificacao)) {
                 $sql .= ' AND equi.identificacao LIKE ?';
             }
-
-        }
-
-        else if (empty($tipo) && !empty($modelo)) {
+        } else if (empty($tipo) && !empty($modelo)) {
 
             $sql .= ' WHERE equi.modelo_id = ?';
 
             if (!empty($identificacao)) {
                 $sql .= ' AND equi.identificacao LIKE ?';
             }
-
-        }
-
-        else if (!empty($tipo)  && !empty($modelo)) {
+        } else if (!empty($tipo)  && !empty($modelo)) {
 
             $sql .= ' WHERE equi.tipo_id = ?
                         AND equi.modelo_id = ?';
@@ -85,19 +77,45 @@ class GerenciarEquipamentoSQL
             if (!empty($identificacao)) {
                 $sql .= ' AND equi.identificacao LIKE ?';
             }
-
-        }
-
-        else if (empty($tipo) && empty($modelo) && !empty($identificacao)) {
+        } else if (empty($tipo) && empty($modelo) && !empty($identificacao)) {
 
             $sql .= ' WHERE equi.identificacao LIKE ?';
-
         }
 
         $sql .= ' ORDER BY equi.identificacao';
 
         return $sql;
+    }
 
+    public static function LISTAR_TODOS_EQUIPAMENTOS(): string
+    {
+
+        $sql = 'SELECT equi.id, 
+                       equi.identificacao,
+                       equi.descricao,
+                       tipo.nome as nome_tipo,
+                       model.nome as nome_modelo,
+                    (  SELECT se.nome as nome_setor
+                  FROM tb_alocar as al
+            -- Relação entre equipamento e o alocar
+            INNER JOIN tb_equipamento as equi1
+                    ON al.equipamento_id = equi1.id
+            -- Relação entre equipamento e o setor
+            INNER JOIN tb_setor as se
+                    ON al.setor_id = se.id
+                WHERE equi1.id = equi.id
+                  AND al.situacao != 2 ) as nome_setor
+                 FROM tb_equipamento as equi
+            -- Relação entre equipamento e o tipo
+           INNER JOIN tb_tipo as tipo
+                   ON equi.tipo_id = tipo.id
+            -- Relaçao entre equipamento e o modelo
+           INNER JOIN tb_modelo as model
+                   ON equi.modelo_id = model.id';
+
+        $sql .= ' ORDER BY equi.identificacao';
+
+        return $sql;
     }
 
     public static function EXCLUIR_EQUIPAMENTO(): string
@@ -108,7 +126,6 @@ class GerenciarEquipamentoSQL
                 WHERE id = ?';
 
         return $sql;
-
     }
 
     public static function DETALHAR_EQUIPAMENTO(): string
@@ -123,10 +140,9 @@ class GerenciarEquipamentoSQL
                 WHERE id = ?';
 
         return $sql;
-
     }
 
-    public static function SELECIONAR_EQUIPAMENTOS_NAO_ALOCADOS(): string 
+    public static function SELECIONAR_EQUIPAMENTOS_NAO_ALOCADOS(): string
     {
 
         $sql = 'SELECT eq.id,
@@ -143,10 +159,9 @@ class GerenciarEquipamentoSQL
                                     WHERE al.situacao != ?)';
 
         return $sql;
-
     }
 
-    public static function ALOCAR_EQUIPAMENTO(): string 
+    public static function ALOCAR_EQUIPAMENTO(): string
     {
 
         $sql = 'INSERT INTO tb_alocar
@@ -155,10 +170,9 @@ class GerenciarEquipamentoSQL
                 (?, ?, ?, ?)';
 
         return $sql;
-
     }
 
-    public static function SELECIONAR_EQUIPAMENTOS_ALOCADOS(): string 
+    public static function SELECIONAR_EQUIPAMENTOS_ALOCADOS(): string
     {
 
         $sql = 'SELECT al.id as id_alocar,
@@ -180,10 +194,9 @@ class GerenciarEquipamentoSQL
                    AND al.situacao != ?';
 
         return $sql;
-
     }
 
-    public static function REMOVER_EQUIPAMENTO_SETOR(): string 
+    public static function REMOVER_EQUIPAMENTO_SETOR(): string
     {
 
         $sql = 'UPDATE tb_alocar
@@ -192,10 +205,9 @@ class GerenciarEquipamentoSQL
                  WHERE id = ?';
 
         return $sql;
-
     }
 
-    public static function CONSULTAR_EQUIPAMENTO_SETOR(): string 
+    public static function CONSULTAR_EQUIPAMENTO_SETOR(): string
     {
 
         $sql = 'SELECT al.id,
@@ -206,7 +218,5 @@ class GerenciarEquipamentoSQL
                  WHERE al.setor_id = ?';
 
         return $sql;
-
     }
-
 }

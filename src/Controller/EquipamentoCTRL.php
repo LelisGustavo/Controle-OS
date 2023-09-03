@@ -41,6 +41,13 @@ class EquipamentoCTRL
         
     }
 
+    public function ListarTodosEquipamentosCTRL(): array
+    {
+
+        return $this->dao->ListarTodosEquipamentosDAO();
+
+    }
+
     public function ExcluirEquipamentoCTRL(EquipamentoVO $vo): int 
     {
 
